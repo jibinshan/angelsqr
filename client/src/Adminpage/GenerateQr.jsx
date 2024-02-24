@@ -4,8 +4,8 @@ import axios from 'axios'
 
 
 function GenerateQr() {
-    const getqrapi = "http://localhost:1999/qrcodes/"
-    const postqrapi = "http://localhost:1999/qrcodes/generateQr"
+    const getqrapi = "https://angelsqr-3.onrender.com/qrcodes/"
+    const postqrapi = "https://angelsqr-3.onrender.com/generateQr"
     const [qr,setQr] = useState([])
     const [number,setNumber] = useState('')
     const fetchdata = async()=>{

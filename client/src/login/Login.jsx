@@ -16,7 +16,7 @@ function Login() {
            [e.target.name]:e.target.value
           }))
     }
-    const api ="http://localhost:1999/admin/login"
+    const api ="https://angelsqr-3.onrender.com/admin/login"
     const loginclick = async(e)=>{
           e.preventDefault()
           try {

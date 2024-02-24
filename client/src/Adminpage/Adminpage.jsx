@@ -36,7 +36,7 @@ function Adminpage({children}) {
             <NavLink to={"/users"} className={({isActive})=> isActive ? ' p-2 bg-slate-700 font-bold text-lg flex pl-8 gap-4 items-center':' p-2 hover:bg-slate-700 font-bold text-lg flex pl-8 gap-4 items-center'}>    
                 <FaUsers className='font-bold text-2xl'/> Users
                 </NavLink>
-            <NavLink to={"/login"} className={({isActive})=> isActive ? ' p-2 bg-slate-700 font-bold text-lg flex pl-8 gap-4 items-center':' p-2 hover:bg-slate-700 font-bold text-lg flex pl-8 gap-4 items-center'}>   
+            <NavLink to={"/login"} className={({isActive})=> isActive ? ' p-2 bg-slate-700 font-bold text-lg flex pl-8 gap-4 items-center':' p-2 hover:bg-slate-700 font-bold text-lg flex pl-8 gap-4 items-center'} onClick={localStorage.removeItem("accesstokenqr");}>   
                 < MdLogout className='font-bold text-2xl'/> Logout
                 </NavLink>
           </div> 
