@@ -5,7 +5,7 @@ import axios from 'axios'
 
 function GenerateQr() {
     const getqrapi = "https://angelsqr-3.onrender.com/qrcodes/"
-    const postqrapi = "https://angelsqr.vercel.app/qrcodes/generateQr"
+    const postqrapi = "https://angelsqr-3.onrender.com/qrcodes/generateQr"
     const [qr,setQr] = useState([])
     const [number,setNumber] = useState('')
     const fetchdata = async()=>{
