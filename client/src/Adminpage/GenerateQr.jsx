@@ -6,9 +6,13 @@ import axios from 'axios'
 function GenerateQr() {
     const getqrapi = "https://angelsqr-3.onrender.com/qrcodes/"
     const postqrapi = "https://angelsqr-3.onrender.com/qrcodes/generateQr"
+<<<<<<< HEAD
     const [registeredqr,setRegisteredQr] =useState([])
     const [notregisteredqr,setNotregisteredQr] =useState([])
     const [newqr,setNewqr] = useState([])
+=======
+    const [qr,setQr] = useState([])
+>>>>>>> e4669a0439dbd9b931f865fa8c1e23f0d5c83f8a
     const [number,setNumber] = useState('')
     const fetchdata = async()=>{
         try {
