@@ -8,6 +8,10 @@ const QRCodeSchema = new mongoose.Schema({
     qrImage: { 
         type: String,
         required: true 
+    },
+    rejistered:{
+        type:mongoose.Schema.Types.ObjectId,
+        ref: "User",
     }
   });
 

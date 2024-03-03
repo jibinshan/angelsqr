@@ -4,6 +4,7 @@ const connectDB = require("./config/config")
 const cloudinaryware = require("./cloudinary/cloudinary")
 const QrRoute = require("./router/QrRouter")
 const admin = require("./router/AdminRouter")
+const user = require("./router/UserRouter")
 
 const app = express()
 
@@ -16,6 +17,7 @@ require("dotenv").config()
 
 app.use("/qrcodes",QrRoute)
 app.use("/admin",admin)
+app.use("/user",user)
 
 
 app.listen(1999,console.log("app is running on port no.1999"))

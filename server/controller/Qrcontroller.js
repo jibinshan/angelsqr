@@ -4,13 +4,14 @@ const QrModel = require("../model/QrSchema")
 const generateQR = async(req,res)=>{
     try {
         const {numberofqr} = req.body
-
+        const qrcodes = []
         for (let i =0 ; i < numberofqr ;i++) {
             const qrId =`http://localhost:1999/admin/login/${new mongoose.Types.ObjectId().toString()}`
             const qrImage = await qrcode.toDataURL(qrId)
+            qrcodes.push({qrId,qrImage})
             await QrModel.create({qrId,qrImage})
         }
-        const qrcodes = await QrModel.find()
+    
         
         return res.status(200).json(qrcodes)
     } catch (error) {
