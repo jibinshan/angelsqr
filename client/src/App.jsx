@@ -21,18 +21,18 @@ function App() {
   return (
    <div>
      <Routes>
+        <Route path='/createuser' element={<CreateUser/>}/>
+        <Route path='/bio' element={<Bio/>}/>
+        <Route path='/photos' element={<Photos/>}/>
+        <Route path='/videos' element={<Videos/>}/>
+        <Route path='/tributes' element={<Tributes/>}/>
+        <Route path='/details' element={<Details/>}/>
         <Route path='/login' element={<Login/>}/>
      <Route element={<ProtectedRoute/>}>
         <Route path='/' element={<Dashboard/>}/>
         <Route path='/generateqr' element={<GenerateQr/>}/>
         <Route path='/users' element={<Users/>}/>
       </Route>
-        <Route path='/bio' element={<Bio/>}/>
-        <Route path='/photos' element={<Photos/>}/>
-        <Route path='/videos' element={<Videos/>}/>
-        <Route path='/tributes' element={<Tributes/>}/>
-        <Route path='/details' element={<Details/>}/>
-        <Route path='/createuser' element={<CreateUser/>}/>
       </Routes>
    </div>
   )
