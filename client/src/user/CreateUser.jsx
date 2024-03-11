@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { MdDelete } from "react-icons/md";
 import { useMediaQuery } from 'react-responsive'
 import axios from 'axios';
-import { useParams } from 'react-router-dom';
+import {  useNavigate,useParams } from 'react-router-dom';
 import Navbar from './Navbar';
 import { CgProfile } from "react-icons/cg";
 import { IoMdPhotos } from "react-icons/io";
@@ -11,6 +11,7 @@ import { ClipLoader } from 'react-spinners';
 
 function CreateUser() {
   let { qrid } = useParams();
+  const navigate = useNavigate()
   const [loading,setLoading] = useState(false)
   const isTabletOrMobile = useMediaQuery({ query: '(max-width: 1224px)' })
   const [profileData, setProfileData] = useState({
@@ -88,6 +89,7 @@ function CreateUser() {
         data:Formdata
       })
       console.log(response);
+       navigate(`/bio/${qrid}`)
     } catch (error) {
       console.log(error);
     }finally{
