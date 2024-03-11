@@ -1,19 +1,44 @@
 import React from 'react'
 import Userprofile from './Userprofile'
+import { useSelector } from 'react-redux'
+import { useMediaQuery } from 'react-responsive'
 
 function Photos() {
+const isTabletOrMobile = useMediaQuery({ query: '(max-width: 1224px)' })
+  const {user} = useSelector((state)=>state.Qr)
   return (
     <Userprofile>
-   <div className='p-4 flex flex-col gap-2 rounded-sm'>
-       <img className='rounded-lg' src="user.png" alt="" />    
-       <p className='font-bold text-md pl-2'>he is very good</p>
-    </div>
-    <div className='p-4 flex flex-col gap-2 rounded-sm'>
-       <img className='rounded-lg' src="user.png" alt="" />    
-       <p className='font-bold text-md pl-2'>he is very good</p>
-    </div>
+      {
+        isTabletOrMobile?
+     <div>
+
+        {user?.rejistered?.additionalPhotos.map((photo,index)=>{
+          return(
+            <div key={index} className='p-4 flex flex-col gap-2 rounded-sm'>
+         <img className='rounded-lg' src="\public\user.png" alt="photo" />    
+      </div>
+  
+      )
+    })
+     }
+    </div>   
+        :
+        <div className='flex flex-col items-center'>
+
+        {user?.rejistered?.additionalPhotos.map((photo,index)=>{
+          return(
+            <div key={index} className='p-4 flex flex-col gap-2 rounded-sm w-[400px]'>
+         <img className='rounded-lg' src="\public\user.png" alt="photo" />    
+      </div>
+  
+      )
+    })
+     }
+    </div> 
+      }
     </Userprofile>
   )
 }
+
 
 export default Photos

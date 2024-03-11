@@ -13,6 +13,9 @@ import Videos from "./user/Videos"
 import Tributes from "./user/Tributes"
 import Details from "./user/Details"
 import CreateUser from "./user/CreateUser"
+import Scanqr from "./protectedRoute/Scanqr"
+import Createtribute from "./user/Createtribute"
+import "./app.css"
 
 
 
@@ -21,19 +24,22 @@ function App() {
   return (
    <div>
      <Routes>
+        <Route path='/bio/:qrid' element={<Bio/>}/>
+        <Route path='/photos/:qrid' element={<Photos/>}/>
+        <Route path='/videos/:qrid' element={<Videos/>}/>
+        <Route path='/tributes/:qrid' element={<Tributes/>}/>
+        <Route path='/details/:qrid' element={<Details/>}/>
+        <Route path='/createuser/:qrid' element={<CreateUser/>}/>
+        <Route path='/createtribute' element={<Createtribute/>}/>
+        <Route path='/scanqr/:qrId' element={<Scanqr/>}/>
         <Route path='/login' element={<Login/>}/>
      <Route element={<ProtectedRoute/>}>
         <Route path='/' element={<Dashboard/>}/>
         <Route path='/generateqr' element={<GenerateQr/>}/>
         <Route path='/users' element={<Users/>}/>
       </Route>
-        <Route path='/bio' element={<Bio/>}/>
-        <Route path='/photos' element={<Photos/>}/>
-        <Route path='/videos' element={<Videos/>}/>
-        <Route path='/tributes' element={<Tributes/>}/>
-        <Route path='/details' element={<Details/>}/>
-        <Route path='/createuser' element={<CreateUser/>}/>
       </Routes>
+     
    </div>
   )
 }

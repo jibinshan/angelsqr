@@ -15,11 +15,7 @@ const TributeSchema = new mongoose.Schema({
     },
     photos:{
         type: String,
-    },
-    Videos:{
-        type: String,
     }
-
   });
 
   const TributeModel = mongoose.model("Tribute",TributeSchema)

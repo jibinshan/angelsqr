@@ -3,7 +3,6 @@ const mongoose = require("mongoose")
 const QRCodeSchema = new mongoose.Schema({
     qrId:{ 
         type: String, 
-        required: true 
     },
     qrImage: { 
         type: String,

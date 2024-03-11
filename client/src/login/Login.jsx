@@ -2,10 +2,12 @@ import axios from 'axios'
 import React, { useState } from 'react'
 import { useMediaQuery } from 'react-responsive'
 import { useNavigate } from 'react-router-dom'
+import { ClipLoader } from 'react-spinners'
 
 function Login() {
     const isTabletOrMobile = useMediaQuery({ query: '(max-width: 1224px)' })
     const navigate = useNavigate()
+    const [loading,setLoading] = useState(false)
     const [login,setLogin] = useState({
         name:'',
         password:''
@@ -19,6 +21,7 @@ function Login() {
     const api ="https://angelsqr-3.onrender.com/admin/login"
     const loginclick = async(e)=>{
           e.preventDefault()
+          setLoading(true)
           try {
             const response = await axios(api,{
                 method:"POST",
@@ -31,6 +34,8 @@ function Login() {
             }   
           } catch (error) {
             console.log(error);
+          }finally{
+            setLoading(false)
           }
     }
   return (
@@ -59,7 +64,7 @@ function Login() {
    <button className='bg-blue-900 hover:bg-blue-500 text-white p-1 rounded-md pt-2 pb-2 font-extrabold'
    type='submit'
    onClick={loginclick}
-   >Login</button>
+   >{loading ? <ClipLoader color='#36D7B7' loading={loading} size={15} /> : "Login"}</button>
    </div>
  </form> 
 </div>

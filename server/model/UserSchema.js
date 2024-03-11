@@ -40,10 +40,12 @@ const UserSchema = new mongoose.Schema({
     cemeteryLocation:{
         type: String,
     },
-    tribute:{
+    tribute:[
+        {
         type:mongoose.Schema.Types.ObjectId,
         ref: "Tribute",
-    }
+    },
+]
 
   });
 

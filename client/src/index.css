@@ -1,33 +1,27 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400..700&family=Ephesis&family=Hedvig+Letters+Sans&family=Kanit:wght@500&family=Nunito+Sans:opsz,wght@6..12,600&family=Outfit:wght@100..900&family=Pacifico&family=Preahvihear&family=Quicksand:wght@500&family=Red+Hat+Display:ital,wght@0,300..900;1,300..900&family=Rubik+Bubbles&family=Saira+Extra+Condensed:wght@100&display=swap');
 
-
-:root {
-  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
-  line-height: 1.5;
-  font-weight: 400;
-
-  color: rgba(255, 255, 255, 0.87);
-
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+body{
+  font-family: "Red Hat Display", sans-serif;
 }
-
 .file-upload-label {
   cursor: pointer;
-  display: inline-block;
+  display: flex;
+  align-items: center;
   padding: 8px 16px;
-  border: 2px solid #ccc;
   border-radius: 4px;
-  background-color: #f9f9f9;
+  background: rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(10px);
   color: #333;
   font-size: 16px;
   font-weight: bold;
-}
+  padding: 16px;
+  border-radius: 10px;
+  width: 200px;
 
+}
+.file-upload-label:hover{
+  box-shadow: 0 8px 16px 0 rgba(31, 38, 135, 0.1);
+}
 .file-upload-input {
   display: none;
 }
