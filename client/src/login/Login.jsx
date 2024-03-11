@@ -27,8 +27,7 @@ function Login() {
                 method:"POST",
                 data:login
             })
-            localStorage.setItem('accesstockenqr', response.data.accesstocken); 
-            localStorage.setItem('adminname', response.data.name);      
+            localStorage.setItem('accesstockenqr', response.data.accesstocken);      
             if (response.status === 200) {      
               navigate("/")
             }   

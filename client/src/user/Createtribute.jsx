@@ -1,11 +1,7 @@
 import React, { useState } from 'react'
 import { useMediaQuery } from 'react-responsive'
 import axios from 'axios';
-<<<<<<< HEAD
 import { useLocation, useNavigate } from 'react-router-dom';
-=======
-import { useNavigate, useLocation } from 'react-router-dom';
->>>>>>> 1bbe6362af26ae90656d3eab18457176f49ee629
 import Userprofile from './Userprofile';
 import { CgProfile } from "react-icons/cg";
 import { MdOutlinePhotoSizeSelectActual } from "react-icons/md";

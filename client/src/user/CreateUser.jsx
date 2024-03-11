@@ -89,11 +89,7 @@ function CreateUser() {
         data:Formdata
       })
       console.log(response);
-<<<<<<< HEAD
       navigate(`/bio/${qrid}`)
-=======
-       navigate(`/bio/${qrid}`)
->>>>>>> 1bbe6362af26ae90656d3eab18457176f49ee629
     } catch (error) {
       console.log(error);
     }finally{
