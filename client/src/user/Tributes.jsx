@@ -3,6 +3,7 @@ import Userprofile from './Userprofile'
 import { Link } from 'react-router-dom'
 import { useSelector } from 'react-redux'
 import { useMediaQuery } from 'react-responsive'
+import userimage from "../Assets/user.png"
 
 function Tributes() {
 const isTabletOrMobile = useMediaQuery({ query: '(max-width: 1224px)' })
@@ -17,10 +18,10 @@ const isTabletOrMobile = useMediaQuery({ query: '(max-width: 1224px)' })
          return(
       <div key={index} className='flex flex-col gap-2 border-[1px] border-slate-700 p-4 rounded-lg'>
         <div className='flex pt-[10px] items-center gap-2'>
-          <img className='w-[40px] h-[40px] rounded-[50px]' src="\public\user.png" alt="" />
+          <img className='w-[40px] h-[40px] rounded-[50px]' src={userimage} alt="" />
           <p className='font-semibold text-lg'>{tributes.name}</p>
         </div>   
-          <img src="\public\user.png" alt="" />
+          <img src={userimage} alt="" />
           <p className='font-medium text-lg'>{tributes.comment}</p>
       </div>  
       ) 
@@ -33,10 +34,10 @@ const isTabletOrMobile = useMediaQuery({ query: '(max-width: 1224px)' })
          return(
       <div key={index} className='w-[400px] flex flex-col gap-2 border-[1px] border-slate-700 p-4 rounded-lg'>
         <div className='flex pt-[10px] items-center gap-2'>
-          <img className='w-[40px] h-[40px] rounded-[50px]' src="\public\user.png" alt="" />
+          <img className='w-[40px] h-[40px] rounded-[50px]' src={userimage} alt="" />
           <p className='font-semibold text-lg'>{tributes.name}</p>
         </div>   
-          <img src="\public\user.png" alt="" />
+          <img src={userimage} alt="" />
           <p className='font-medium text-lg'>{tributes.comment}</p>
       </div>  
       ) 
