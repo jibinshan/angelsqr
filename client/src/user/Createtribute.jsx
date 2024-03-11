@@ -1,14 +1,14 @@
 import React, { useState } from 'react'
 import { useMediaQuery } from 'react-responsive'
 import axios from 'axios';
-import { useLocation } from 'react-router-dom';
+import { useNavigate, useLocation } from 'react-router-dom';
 import Userprofile from './Userprofile';
 import { CgProfile } from "react-icons/cg";
 import { MdOutlinePhotoSizeSelectActual } from "react-icons/md";
 import { ClipLoader } from 'react-spinners';
 
 function Createtribute() {
-
+  const navigate = useNavigate()
   const [loading,setLoading] = useState(false)
   const isTabletOrMobile = useMediaQuery({ query: '(max-width: 1224px)' })
   const location = useLocation();
@@ -65,6 +65,7 @@ function Createtribute() {
         data:Formdata
       })
       console.log(response);
+      navigate(`/bio/${userid}`)
     } catch (error) {
       console.log(error);
     }finally{
