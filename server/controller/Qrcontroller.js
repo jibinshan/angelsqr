@@ -7,7 +7,7 @@ const generateQR = async(req,res)=>{
         const qrcodes = []
         for (let i =0 ; i < numberofqr ;i++) {
             const qrId = new mongoose.Types.ObjectId().toString()
-            const qrurl = `http://localhost:5173/scanqr/${qrId}`
+            const qrurl = `https://angelsqr.vercel.app/scanqr/${qrId}`
             const qrImage = await qrcode.toDataURL(qrurl)
             qrcodes.push({qrId,qrImage})
             await QrModel.create({qrId,qrImage})
