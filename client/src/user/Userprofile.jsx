@@ -50,7 +50,7 @@ function Userprofile({children}) {
         <img className='w-full h-[250px] rounded-2xl' src="\public\flowers.png" alt="" />
         <div className=' w-full  flex flex-col items-center  pl-4 pr-4 gap-4'>
          <div className='p-[5px] rounded-[50%] bg-white absolute top-[100px]'>
-          <img className='w-[250px] h-[250px] rounded-[50%]' src="\public\mammotty.png" alt="user" />
+          <img className='w-[250px] h-[250px] rounded-[50%]' src="mammotty.png" alt="user" />
          </div>
           <h1 className='font-bold text-4xl mt-[110px]'>{user?.rejistered?.username}</h1>
           <div>
