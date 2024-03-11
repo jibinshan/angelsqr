@@ -2,7 +2,11 @@ import React, { useState } from 'react'
 import { MdDelete } from "react-icons/md";
 import { useMediaQuery } from 'react-responsive'
 import axios from 'axios';
+<<<<<<< HEAD
 import { useNavigate, useParams } from 'react-router-dom';
+=======
+import {  useNavigate,useParams } from 'react-router-dom';
+>>>>>>> 1bbe6362af26ae90656d3eab18457176f49ee629
 import Navbar from './Navbar';
 import { CgProfile } from "react-icons/cg";
 import { IoMdPhotos } from "react-icons/io";
@@ -89,7 +93,11 @@ function CreateUser() {
         data:Formdata
       })
       console.log(response);
+<<<<<<< HEAD
       navigate(`/bio/${qrid}`)
+=======
+       navigate(`/bio/${qrid}`)
+>>>>>>> 1bbe6362af26ae90656d3eab18457176f49ee629
     } catch (error) {
       console.log(error);
     }finally{
