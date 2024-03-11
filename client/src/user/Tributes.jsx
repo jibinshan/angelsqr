@@ -12,7 +12,7 @@ const isTabletOrMobile = useMediaQuery({ query: '(max-width: 1224px)' })
       {
         isTabletOrMobile ?     
         <div className='w-full p-4 flex flex-col gap-2'> 
-      <Link to="/createtribute" state={{ userid: user?.rejistered?._id }} className='bg-blue-600 p-2 w-full text-white border-none text-center rounded-lg'>Create Tribute</Link> 
+      <Link to="/createtribute" state={{ userid: user?.rejistered?._id, qrid:user?.qrId }} className='bg-blue-600 p-2 w-full text-white border-none text-center rounded-lg'>Create Tribute</Link> 
     {user?.rejistered?.tribute.map((tributes,index)=>{
          return(
       <div key={index} className='flex flex-col gap-2 border-[1px] border-slate-700 p-4 rounded-lg'>

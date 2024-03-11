@@ -1,7 +1,7 @@
 import { Navigate, Outlet } from 'react-router-dom'
 
  const ProtectedRoute=() =>{
-    if(localStorage.getItem("accesstockenqr")){
+    if(localStorage.accesstockenqr){
         return <Outlet/>
     }else{
         return <Navigate to="/login"/>

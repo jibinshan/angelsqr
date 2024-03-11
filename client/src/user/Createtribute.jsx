@@ -1,19 +1,18 @@
 import React, { useState } from 'react'
 import { useMediaQuery } from 'react-responsive'
 import axios from 'axios';
-import { useLocation } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import Userprofile from './Userprofile';
 import { CgProfile } from "react-icons/cg";
 import { MdOutlinePhotoSizeSelectActual } from "react-icons/md";
 import { ClipLoader } from 'react-spinners';
 
 function Createtribute() {
-
+  const navigate = useNavigate()
   const [loading,setLoading] = useState(false)
   const isTabletOrMobile = useMediaQuery({ query: '(max-width: 1224px)' })
   const location = useLocation();
-    const { userid } = location.state || {};
-   
+    const { userid,qrid } = location.state || {};
   const [tributeData, setTributeData] = useState({
     avatar:'',
     comment:'',
@@ -65,6 +64,7 @@ function Createtribute() {
         data:Formdata
       })
       console.log(response);
+      navigate(`/bio/${qrid}`)
     } catch (error) {
       console.log(error);
     }finally{
