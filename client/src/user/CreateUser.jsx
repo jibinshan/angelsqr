@@ -187,7 +187,7 @@ function CreateUser() {
               <input id="additional-photos-upload" className='file-upload-input' type="file" multiple onChange={handlePhotoChange}/>
               {
               profileData.additionalPhotos.length > 0 &&
-              <div className='grid grid-cols-3 gap-2 pt-2 pb-2'>
+              <div className='grid grid-cols-3 gap-2 pt-2 pb-2 p-2'>
               {
               profileData.additionalPhotos.map((photos)=>{
                 return(
@@ -211,7 +211,7 @@ function CreateUser() {
               <input id="single-video-upload" className='file-upload-input' type="file" multiple onChange={handleVideoChange}/>
             {
               profileData.additionalVideos.length > 0 &&
-              <div className='grid grid-cols-3 gap-2 pt-2 pb-2'>
+              <div className='grid grid-cols-3 gap-2 pt-2 pb-2 p-2'>
               {
               profileData.additionalVideos.map((videos)=>{
                 return(
@@ -301,7 +301,7 @@ function CreateUser() {
               <input id="additional-photos-upload" className='file-upload-input' type="file" multiple onChange={handlePhotoChange}/>
               {
               profileData.additionalPhotos.length > 0 &&
-              <div className='grid grid-cols-3 gap-2 pt-2 pb-2'>
+              <div className='grid grid-cols-3 gap-2 pt-2 pb-2 p-2'>
               {
               profileData.additionalPhotos.map((photos)=>{
                 return(
@@ -325,7 +325,7 @@ function CreateUser() {
               <input id="single-video-upload" className='file-upload-input' type="file" multiple onChange={handleVideoChange}/>
             {
               profileData.additionalVideos.length > 0 &&
-              <div className='grid grid-cols-3 gap-2 pt-2 pb-2'>
+              <div className='grid grid-cols-3 gap-2 pt-2 pb-2 p-2'>
               {
               profileData.additionalVideos.map((videos)=>{
                 return(
