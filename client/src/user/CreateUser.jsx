@@ -219,7 +219,7 @@ function CreateUser() {
                     <div className='w-[100px] text-black rounded-t-md bg-blue-600 hover:bg-red-600 flex justify-center p-[1px]' onClick={()=>handledeletevideo(videos.lastModified)}>
                        <MdDelete />
                     </div>
-                    <img  className='w-[100px] h-[100px]' src={URL.createObjectURL(videos)}  alt="no image"/>
+                    <video className='w-[100px] h-[100px]' src={URL.createObjectURL(videos)}></video>
                   </div>
                     )
                   })
@@ -333,7 +333,7 @@ function CreateUser() {
                     <div className='w-[100px] text-black rounded-t-md bg-blue-600 hover:bg-red-600 flex justify-center p-[1px]' onClick={()=>handledeletevideo(videos.lastModified)}>
                        <MdDelete />
                     </div>
-                    <img  className='w-[100px] h-[100px]' src={URL.createObjectURL(videos)}  alt="no image"/>
+                    <video className='w-[100px] h-[100px]' src={URL.createObjectURL(videos)}></video>
                   </div>
                     )
                   })
