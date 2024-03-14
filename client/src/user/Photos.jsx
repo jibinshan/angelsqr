@@ -25,11 +25,11 @@ const isTabletOrMobile = useMediaQuery({ query: '(max-width: 1224px)' })
      }
     </div>   
         :
-        <div className='flex flex-col items-center'>
+        <div className='grid grid-cols-3 gap-4 items-center'>
 
         {user?.rejistered?.additionalPhotos.map((photo,index)=>{
           return(
-            <div key={index} className='p-4 flex flex-col gap-2 rounded-sm w-[400px]'>
+            <div key={index} className='pt-4 rounded-sm w-full'>
          <img className='rounded-lg' src={userimage} alt="photo" />    
       </div>
   

@@ -8,6 +8,7 @@ import { CgProfile } from "react-icons/cg";
 import { IoMdPhotos } from "react-icons/io";
 import { BiSolidVideos } from "react-icons/bi";
 import { ClipLoader } from 'react-spinners';
+import { FaImage } from "react-icons/fa";
 
 function CreateUser() {
   let { qrid } = useParams();
@@ -21,6 +22,7 @@ function CreateUser() {
     dateOfDeath: '',
     about: '',
     bio: '',
+    coverImage:'',
     additionalPhotos: [],
     additionalVideos: [],
     cemeteryName: '',
@@ -39,6 +41,13 @@ function CreateUser() {
     setProfileData(prevState => ({
       ...prevState,
       profilePhoto:e.target.files[0]
+    }));
+  }
+
+  const handlecoverChange = (e)=>{
+    setProfileData(prevState => ({
+      ...prevState,
+      coverImage:e.target.files[0]
     }));
   }
 
@@ -64,6 +73,7 @@ function CreateUser() {
     const Formdata = new FormData()
     Formdata.append("username",profileData.username)
     Formdata.append("profilePhoto",profileData.profilePhoto)
+    Formdata.append("coverImage",profileData.coverImage)
     profileData.additionalPhotos.forEach((photo) => {
       Formdata.append("additionalPhotos", photo);
     });
@@ -135,17 +145,31 @@ function CreateUser() {
                
               }
             </div>
+
+            <div className='w-fit flex flex-col bg-slate-200 rounded-2xl'>
+              <label className='text-black file-upload-label' htmlFor="cover-photo-upload">
+                <span className="file-upload-icon flex items-center"><FaImage className='h-[30px] w-[30px]'/></span> Cover Image
+              </label>
+              <input id="cover-photo-upload" className='file-upload-input' type="file" onChange={handlecoverChange}/>
+              {
+                profileData.coverImage &&
+                <div className='flex justify-center p-2'>
+                  <img src={URL.createObjectURL(profileData.coverImage)} alt="no image" className=' w-[150px] h-[100px]'/>
+                </div>
+               
+              }
+            </div>
             <div className='flex flex-col'>
             <label htmlFor="" className='text-lg'>Full Name</label>
             <input className='p-4 pl-2 text-black rounded-lg border-gray-400 border-[1px]' type="text" name="username" onChange={handleChange}/>
             </div>
             <div className='flex flex-col'>
             <label htmlFor="">Date Of Birth</label>
-            <input className='p-4 pl-2 text-black rounded-lg border-gray-400 border-[1px]' type="text"  name="dateOfBirth" onChange={handleChange}/>
+            <input className='p-4 pl-2 text-black rounded-lg border-gray-400 border-[1px]' type="date"  name="dateOfBirth" onChange={handleChange}/>
             </div>
             <div className='flex flex-col'>
             <label htmlFor="">Date Of Death</label>
-            <input className='p-4 pl-2 text-black rounded-lg border-gray-400 border-[1px]' type="text" name="dateOfDeath" onChange={handleChange}/>
+            <input className='p-4 pl-2 text-black rounded-lg border-gray-400 border-[1px]' type="date" name="dateOfDeath" onChange={handleChange}/>
             </div>
             <div className='flex flex-col'>
             <label htmlFor="">About (one sentence)</label>
@@ -236,17 +260,30 @@ function CreateUser() {
                
               }
             </div>
+            <div className='w-fit flex flex-col bg-slate-200 rounded-2xl'>
+              <label className='text-black file-upload-label' htmlFor="cover-photo-upload">
+                <span className="file-upload-icon flex items-center"><FaImage className='h-[30px] w-[30px]'/></span> Cover Image
+              </label>
+              <input id="cover-photo-upload" className='file-upload-input' type="file" onChange={handlecoverChange}/>
+              {
+                profileData.coverImage &&
+                <div className='flex justify-center p-2'>
+                  <img src={URL.createObjectURL(profileData.coverImage)} alt="no image" className=' w-[150px] h-[100px]'/>
+                </div>
+               
+              }
+            </div>
             <div className='flex flex-col'>
             <label htmlFor="">Full Name</label>
             <input className='p-4 pl-2 text-black rounded-lg border-gray-400 border-[1px]' type="text" name="username" onChange={handleChange}/>
             </div>
             <div className='flex flex-col'>
             <label htmlFor="">Date Of Birth</label>
-            <input className='p-4 pl-2 text-black rounded-lg border-gray-400 border-[1px]' type="text"  name="dateOfBirth" onChange={handleChange}/>
+            <input className='p-4 pl-2 text-black rounded-lg border-gray-400 border-[1px]' type="date"  name="dateOfBirth" onChange={handleChange}/>
             </div>
             <div className='flex flex-col'>
             <label htmlFor="">Date Of Death</label>
-            <input className='p-4 pl-2 text-black rounded-lg border-gray-400 border-[1px]' type="text" name="dateOfDeath" onChange={handleChange}/>
+            <input className='p-4 pl-2 text-black rounded-lg border-gray-400 border-[1px]' type="date" name="dateOfDeath" onChange={handleChange}/>
             </div>
             <div className='flex flex-col'>
             <label htmlFor="">About (one sentence)</label>

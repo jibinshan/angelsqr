@@ -19,7 +19,13 @@ const isTabletOrMobile = useMediaQuery({ query: '(max-width: 1224px)' })
   },[])
   return (
     <Userprofile>
-       <h1 className='w-full p-4 text-gray-700 text-lg font-bold'>{user?.rejistered?.bio}</h1>      
+      {
+        isTabletOrMobile ?
+        <h1 className='w-full p-4 text-gray-700 text-lg font-bold'>{user?.rejistered?.bio}</h1>      
+        :
+        <h1 className='w-full pt-4 text-gray-700 text-2xl font-bold'>{user?.rejistered?.bio}</h1>      
+      }
+      
     </Userprofile>
   )
 }

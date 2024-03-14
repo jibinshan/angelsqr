@@ -7,7 +7,6 @@ const UserSchema = new mongoose.Schema({
     },
     profilePhoto: { 
         type: String,
-        required: true 
     },
     dateOfBirth:{
         type: String,
@@ -20,6 +19,9 @@ const UserSchema = new mongoose.Schema({
     about:{
         type: String,
         required: true  
+    },
+    coverImage:{
+        type: String,
     },
     bio:{
         type: String,

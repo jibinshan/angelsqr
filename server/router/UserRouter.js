@@ -24,7 +24,8 @@ const storage = multer.diskStorage({
   
   // Route for creating a new user
   router.put("/createUser", upload.fields([
-    { name: 'profilePhoto', maxCount: 1 },
+  { name: 'profilePhoto', maxCount: 1 },
+  { name: 'coverImage', maxCount: 1 },
   { name: 'additionalPhotos', maxCount: 100 },
   { name: 'additionalVideos', maxCount: 100}
 ]), async (req, res) => {
@@ -44,6 +45,7 @@ const storage = multer.diskStorage({
 
     // Extract file paths from the uploaded files
     const profilePhoto = req.files['profilePhoto'] ? req.files['profilePhoto'][0].path : '';
+    const coverImage = req.files['coverImage'] ? req.files['coverImage'][0].path : '';
     const additionalPhotos = req.files['additionalPhotos'] ? req.files['additionalPhotos'].map(file => file.path) : [];
     const additionalVideos = req.files['additionalVideos'] ? req.files['additionalVideos'].map(file => file.path) : [];
 
@@ -60,6 +62,7 @@ const storage = multer.diskStorage({
       cemeteryName,
       cemeteryPlotNumber,
       cemeteryLocation,
+      coverImage
     });  
     await userdata.save()   
 
@@ -95,15 +98,15 @@ router.put("/createtribute/:userid", upload.fields([
 { name: 'photos', maxCount: 1 },
 ]),async(req,res)=>{
   try {
-    const {comment,name} = req.body;
+    const {comment,name,email} = req.body;
     const {userid} = req.params
     const avatar = req.files['avatar'] ? req.files['avatar'][0].path : '';
     const photos = req.files['photos'] ? req.files['photos'][0].path : '';
-    console.log(userid,"=userid");
     const tributedata = new tribute({
      comment,
      name,
      avatar,
+     email,
      photos
     });
     await tributedata.save()

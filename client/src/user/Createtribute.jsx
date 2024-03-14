@@ -17,6 +17,7 @@ function Createtribute() {
     avatar:'',
     comment:'',
     name:'',
+    email:'',
     photos:''
   });
 
@@ -50,6 +51,7 @@ function Createtribute() {
     Formdata.append("name",tributeData.name)
     Formdata.append("photos",tributeData.photos)
     Formdata.append("avatar",tributeData.avatar)
+    Formdata.append("email",tributeData.email)
     Formdata.append("comment",tributeData.comment)
     const api = `https://angelsqr-3.onrender.com/user/createtribute/${userid}`
     
@@ -99,7 +101,7 @@ function Createtribute() {
           
           <input className='p-4 pl-2 text-black rounded-lg border-gray-400 border-[1px]' placeholder='Your Name' type="text" name="name" onChange={handleChange}/>
           
-         
+         <input className='p-4 pl-2 text-black rounded-lg border-gray-400 border-[1px]' placeholder='Email' type="email" name="email" onChange={handleChange}/>
           <textarea className='p-4 pl-2 text-black rounded-lg border-gray-400 border-[1px] h-[150px]' placeholder='Write Your Tribute Here' name="comment" onChange={handleChange}></textarea>
           
            <div className='w-fit flex flex-col bg-slate-200 rounded-2xl'>
@@ -136,7 +138,7 @@ function Createtribute() {
             </div>
             
             <input className='p-4 pl-2 text-black rounded-lg border-gray-400 border-[1px]' placeholder='Your Name' type="text" name="name" onChange={handleChange}/>
-            
+            <input className='p-4 pl-2 text-black rounded-lg border-gray-400 border-[1px]' placeholder='Email' type="email" name="email" onChange={handleChange}/>
            
             <textarea className='p-4 pl-2 text-black rounded-lg border-gray-400 border-[1px] h-[150px]' placeholder='Write Your Tribute Here' name="comment" onChange={handleChange}></textarea>
             

@@ -6,12 +6,14 @@ const TributeSchema = new mongoose.Schema({
         required: true 
     },
     avatar: { 
-        type: String,
-        required: true 
+        type: String, 
     },
     comment:{
         type: String,
         required: true  
+    },
+    email:{
+       type:String
     },
     photos:{
         type: String,
