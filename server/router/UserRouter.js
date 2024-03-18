@@ -11,9 +11,9 @@ require("dotenv").config()
 
 // process.env.AWS_ACCESS_KEY_ID,
 const s3Client = new S3({
-    region: "us-east-1",  
-    accessKeyId: "AKIA5S6UTG477JFEHGMZ",
-    secretAccessKey: "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"
+    region: process.env.AWS_S3_REGION,  
+    accessKeyId: process.env.AWS_ACCESS_KEY_ID,
+    secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY
 });
 
 // Multer configuration for handling file uploads
@@ -86,9 +86,6 @@ const storage = multer.diskStorage({
      const coverImageUrl = uploadResults.find(result => result.fieldname === 'coverImage');
      const additionalPhotosUrls = uploadResults.filter(result => result.fieldname === 'additionalPhotos').map(result => result.Location);
      const additionalVideosUrls = uploadResults.filter(result => result.fieldname === 'additionalVideos').map(result => result.Location);
-   console.log(profilePhotoUrl.Location,"===profilePhotoUrl");
-   console.log(coverImageUrl.Location,"===coverimage");
-   console.log(additionalPhotosUrls,"===additionalphotourl");
     // Create a new user object
     const userdata = new UserModel({
       username,
@@ -140,8 +137,8 @@ router.put("/createtribute/:userid", upload.fields([
   try {
     const {comment,name,email} = req.body;
     const {userid} = req.params
-    const avatar = req.files['avatar'] ? req.files['avatar'][0].path : '';
-    const photos = req.files['photos'] ? req.files['photos'][0].path : '';
+    const avatar = req.files['avatar'] ? req.files['avatar'][0] : '';
+    const photos = req.files['photos'] ? req.files['photos'][0] : '';
 
  // Upload files to S3 concurrently
  const uploadPromises = [];
@@ -190,11 +187,9 @@ router.get("/getusers",async(req,res)=>{
 })
 async function uploadToS3(file,fieldname) {
   let files = file 
-  console.log(files,"===file");
-  console.log(fieldname,"===fieldname");
   const filestream  = fs.createReadStream(files.path)
   const uploadparams = {
-    Bucket: "angelsnew",
+    Bucket: process.env.AWS_S3_BUCKET,
     Key: `${Date.now()}-${files.originalname}`,
     Body: filestream,
     ACL: "public-read"
