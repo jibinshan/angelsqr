@@ -20,17 +20,16 @@ function Userprofile({children}) {
     useEffect(()=>{
       fetchdata()
     },[])
-    console.log(user.rejistered.profilePhoto,"===propic");
     return (
       <div className='text-black'>
       {
         isTabletOrMobile
         ?
         <div>
-        <img className='w-full h-[150px] rounded-b-xl' src={user.rejistered.coverImage?user.rejistered.coverImage:flowerimage} alt="" />
+        <img className='w-full h-[150px] rounded-b-xl' src={user?.rejistered?.coverImage?user?.rejistered?.coverImage:flowerimage} alt="" />
         <div className=' w-full  flex flex-col items-center  pl-4 pr-4 gap-2'>
          <div className='p-[5px] rounded-[50%] bg-white absolute top-[100px]'>
-          <img className='w-[150px] h-[150px] rounded-[50%]' src={user.rejistered.profilePhoto?user.rejistered.profilePhoto:userimage} alt="user" />
+          <img className='w-[150px] h-[150px] rounded-[50%]' src={user?.rejistered?.profilePhoto?user?.rejistered?.profilePhoto:userimage} alt="user" />
          </div>
           <h1 className='font-bold text-xl mt-[120px]'>{user?.rejistered?.username}</h1>
           <div>
@@ -50,10 +49,10 @@ function Userprofile({children}) {
       </div>
         :
         <div className='pl-4 pr-4 mt-4'> 
-        <img className='w-full h-[250px] rounded-2xl' src={user.rejistered.coverImage?user.rejistered.coverImage:flowerimage} alt="" />
+        <img className='w-full h-[250px] rounded-2xl' src={user?.rejistered?.coverImage?user?.rejistered?.coverImage:flowerimage} alt="" />
         <div className=' w-full  flex flex-col items-center  pl-4 pr-4 gap-4'>
          <div className='p-[5px] rounded-[50%] bg-white absolute top-[100px]'>
-          <img className='w-[250px] h-[250px] rounded-[50%]' src={user.rejistered.profilePhoto?user.rejistered.profilePhoto:userimage} alt="user" />
+          <img className='w-[250px] h-[250px] rounded-[50%]' src={user?.rejistered?.profilePhoto?user?.rejistered?.profilePhoto:userimage} alt="user" />
          </div>
           <h1 className='font-bold text-4xl mt-[110px]'>{user?.rejistered?.username}</h1>
           <div>

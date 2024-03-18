@@ -18,11 +18,11 @@ const isTabletOrMobile = useMediaQuery({ query: '(max-width: 1224px)' })
          return(
       <div key={index} className='flex flex-col gap-2 border-[1px] border-slate-700 p-4 rounded-lg'>
         <div className='flex pt-[10px] items-center gap-2'>
-          <img className='w-[40px] h-[40px] rounded-[50px]' src={userimage} alt="" />
-          <p className='font-semibold text-lg'>{tributes.name}</p>
+          <img className='w-[40px] h-[40px] rounded-[50px]' src={tributes?.avatar?tributes?.avatar:userimage} alt="" />
+          <p className='font-semibold text-lg'>{tributes?.name}</p>
         </div>   
-          <img src={userimage} alt="" />
-          <p className='font-medium text-lg'>{tributes.comment}</p>
+          <img src={tributes?.photos && tributes?.photos} alt="" />
+          <p className='font-medium text-lg'>{tributes?.comment}</p>
       </div>  
       ) 
     })}
@@ -34,11 +34,11 @@ const isTabletOrMobile = useMediaQuery({ query: '(max-width: 1224px)' })
          return(
       <div key={index} className='w-full flex flex-col gap-2 border-[1px] border-slate-700 p-4 rounded-lg'>
         <div className='flex pt-[10px] items-center gap-2'>
-          <img className='w-[40px] h-[40px] rounded-[50px]' src={userimage} alt="" />
-          <p className='font-semibold text-lg'>{tributes.name}</p>
+          <img className='w-[40px] h-[40px] rounded-[50px]' src={tributes?.avatar?tributes?.avatar:userimage} alt="" />
+          <p className='font-semibold text-lg'>{tributes?.name}</p>
         </div>   
-          <p className='font-medium pt-2 text-lg'>{tributes.comment}</p>
-          <img className='w-[80px] h-[80px]' src={userimage} alt="" />
+          <p className='font-medium pt-2 text-lg'>{tributes?.comment}</p>
+          <img className='w-[80px] h-[80px]' src={tributes?.photos && tributes?.photos} alt="" />
       </div>  
       ) 
     })}
