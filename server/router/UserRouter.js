@@ -192,7 +192,7 @@ async function uploadToS3(file,fieldname) {
     Bucket: process.env.AWS_S3_BUCKET,
     Key: `${Date.now()}-${files.originalname}`,
     Body: filestream,
-    ACL: "public-read"
+    //ACL: "public-read"
   };
   try {
     const response = await s3Client.upload(uploadparams).promise();
