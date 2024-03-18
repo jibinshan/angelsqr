@@ -127,7 +127,7 @@ const storage = multer.diskStorage({
     // If an error occurs, send an error response
     console.error(error);
     console.log(error.message);
-    return res.status(400).json("Internal server error");
+    return res.status(400).json(error.message);
   }
 });
 router.put("/createtribute/:userid", upload.fields([
