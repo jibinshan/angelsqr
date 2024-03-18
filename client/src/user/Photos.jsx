@@ -17,7 +17,7 @@ const isTabletOrMobile = useMediaQuery({ query: '(max-width: 1224px)' })
         {user?.rejistered?.additionalPhotos.map((photo,index)=>{
           return(
             <div key={index} className='p-4 flex flex-col gap-2 rounded-sm'>
-         <img className='rounded-lg' src={userimage} alt="photo" />    
+         <img className='rounded-lg' src={photo && photo} alt="photo" />    
       </div>
   
       )
@@ -30,7 +30,7 @@ const isTabletOrMobile = useMediaQuery({ query: '(max-width: 1224px)' })
         {user?.rejistered?.additionalPhotos.map((photo,index)=>{
           return(
             <div key={index} className='pt-4 rounded-sm w-full'>
-         <img className='rounded-lg' src={userimage} alt="photo" />    
+         <img className='rounded-lg' src={photo.additionalPhotos?photo.additionalPhotos:userimage} alt="photo" />    
       </div>
   
       )

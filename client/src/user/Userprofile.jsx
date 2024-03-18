@@ -6,7 +6,7 @@ import { NavLink } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
 import { qrasync } from '../reduxtoolkit/Qrredux'
 import flowerimage from "../Assets/flowers.png"
-import mammotty from "../Assets/mammotty.png"
+import userimage from "../Assets/user.png"
 
 function Userprofile({children}) {
   const isTabletOrMobile = useMediaQuery({ query: '(max-width: 1224px)' })
@@ -18,18 +18,19 @@ function Userprofile({children}) {
       dispatch(qrasync())
     }
     useEffect(()=>{
-       fetchdata()
+      fetchdata()
     },[])
+    console.log(user.rejistered.profilePhoto,"===propic");
     return (
       <div className='text-black'>
       {
         isTabletOrMobile
         ?
         <div>
-        <img className='w-full h-[150px] rounded-b-xl' src={flowerimage} alt="" />
+        <img className='w-full h-[150px] rounded-b-xl' src={user.rejistered.coverImage?user.rejistered.coverImage:flowerimage} alt="" />
         <div className=' w-full  flex flex-col items-center  pl-4 pr-4 gap-2'>
          <div className='p-[5px] rounded-[50%] bg-white absolute top-[100px]'>
-          <img className='w-[150px] h-[150px] rounded-[50%]' src={mammotty} alt="user" />
+          <img className='w-[150px] h-[150px] rounded-[50%]' src={user.rejistered.profilePhoto?user.rejistered.profilePhoto:userimage} alt="user" />
          </div>
           <h1 className='font-bold text-xl mt-[120px]'>{user?.rejistered?.username}</h1>
           <div>
@@ -49,10 +50,10 @@ function Userprofile({children}) {
       </div>
         :
         <div className='pl-4 pr-4 mt-4'> 
-        <img className='w-full h-[250px] rounded-2xl' src={flowerimage} alt="" />
+        <img className='w-full h-[250px] rounded-2xl' src={user.rejistered.coverImage?user.rejistered.coverImage:flowerimage} alt="" />
         <div className=' w-full  flex flex-col items-center  pl-4 pr-4 gap-4'>
          <div className='p-[5px] rounded-[50%] bg-white absolute top-[100px]'>
-          <img className='w-[250px] h-[250px] rounded-[50%]' src={mammotty} alt="user" />
+          <img className='w-[250px] h-[250px] rounded-[50%]' src={user.rejistered.profilePhoto?user.rejistered.profilePhoto:userimage} alt="user" />
          </div>
           <h1 className='font-bold text-4xl mt-[110px]'>{user?.rejistered?.username}</h1>
           <div>

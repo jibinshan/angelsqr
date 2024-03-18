@@ -5,19 +5,29 @@ const multer = require("multer");
 const UserModel = require("../model/UserSchema"); 
 const qr = require("../model/QrSchema")
 const tribute = require("../model/TributeSchema")
+const  S3 = require("aws-sdk/clients/s3");
+const fs = require("fs")
+require("dotenv").config()
+
+// process.env.AWS_ACCESS_KEY_ID,
+const s3Client = new S3({
+    region: "us-east-1",  
+    accessKeyId: "AKIA5S6UTG477JFEHGMZ",
+    secretAccessKey: "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"
+});
 
 // Multer configuration for handling file uploads
 
 const storage = multer.diskStorage({
-    destination: function (req, file, cb) {
-      cb(null, 'public/images')
+  destination: function (req, file, cb) {
+    cb(null, 'public/images')
+  },
+  filename: function (req, file, cb) {
+      const uniqueSuffix = Date.now() + "-" + Math.round(Math.random() * 1e9);
+      const extension = file.originalname.split(".").pop();
+      cb(null, file.fieldname + "-" + uniqueSuffix + "." + extension);
     },
-    filename: function (req, file, cb) {
-        const uniqueSuffix = Date.now() + "-" + Math.round(Math.random() * 1e9);
-        const extension = file.originalname.split(".").pop();
-        cb(null, file.fieldname + "-" + uniqueSuffix + "." + extension);
-      },
-  })
+})
   
   
   const upload = multer({ storage: storage });
@@ -44,25 +54,55 @@ const storage = multer.diskStorage({
     } = req.body;
 
     // Extract file paths from the uploaded files
-    const profilePhoto = req.files['profilePhoto'] ? req.files['profilePhoto'][0].path : '';
-    const coverImage = req.files['coverImage'] ? req.files['coverImage'][0].path : '';
-    const additionalPhotos = req.files['additionalPhotos'] ? req.files['additionalPhotos'].map(file => file.path) : [];
-    const additionalVideos = req.files['additionalVideos'] ? req.files['additionalVideos'].map(file => file.path) : [];
-
+  console.log(req.files['profilePhoto'],"=====profile");
+    const profilePhoto = req.files['profilePhoto'] ? req.files['profilePhoto'] : '';
+    const coverImage = req.files['coverImage'] ? req.files['coverImage'] : '';
+    const additionalPhotos = req.files['additionalPhotos'] ? req.files['additionalPhotos'].map(file => file) : [];
+    const additionalVideos = req.files['additionalVideos'] ? req.files['additionalVideos'].map(file => file) : [];
+    // Upload files to S3 concurrently
+    const uploadPromises = [];
+    if (profilePhoto) {
+       console.log(profilePhoto,"===profilePhoto");
+       uploadPromises.push(uploadToS3(profilePhoto[0],'profilePhoto'));
+     }
+     if (coverImage) {
+       uploadPromises.push(uploadToS3(coverImage[0],'coverImage'));
+     }
+    
+      
+       additionalVideos.forEach(video => uploadPromises.push(uploadToS3(video,'additionalPhotos')));
+    
+     
+      
+       additionalPhotos.forEach(photo => uploadPromises.push(uploadToS3(photo,'additionalPhotos')));
+     
+ 
+     // Wait for all uploads to complete
+     const uploadResults = await Promise.all(uploadPromises);
+     console.log(uploadPromises,"===results");
+ 
+     // Extract URLs from upload results
+     const profilePhotoUrl = uploadResults.find(result => result.fieldname === 'profilePhoto');
+     const coverImageUrl = uploadResults.find(result => result.fieldname === 'coverImage');
+     const additionalPhotosUrls = uploadResults.filter(result => result.fieldname === 'additionalPhotos').map(result => result.Location);
+     const additionalVideosUrls = uploadResults.filter(result => result.fieldname === 'additionalVideos').map(result => result.Location);
+   console.log(profilePhotoUrl.Location,"===profilePhotoUrl");
+   console.log(coverImageUrl.Location,"===coverimage");
+   console.log(additionalPhotosUrls,"===additionalphotourl");
     // Create a new user object
     const userdata = new UserModel({
       username,
-      profilePhoto,
+      profilePhoto: profilePhotoUrl ? profilePhotoUrl.Location : '',
       dateOfBirth,
       dateOfDeath,
       about,
       bio,
-      additionalPhotos,
-      additionalVideos,
+      additionalPhotos: additionalPhotosUrls,
+      additionalVideos: additionalVideosUrls,
       cemeteryName,
       cemeteryPlotNumber,
       cemeteryLocation,
-      coverImage
+      coverImage: coverImageUrl ? coverImageUrl.Location : '',
     });  
     await userdata.save()   
 
@@ -102,12 +142,26 @@ router.put("/createtribute/:userid", upload.fields([
     const {userid} = req.params
     const avatar = req.files['avatar'] ? req.files['avatar'][0].path : '';
     const photos = req.files['photos'] ? req.files['photos'][0].path : '';
+
+ // Upload files to S3 concurrently
+ const uploadPromises = [];
+ if (avatar) {
+    uploadPromises.push(uploadToS3(avatar,'avatar'));
+  }
+  if (photos) {
+    uploadPromises.push(uploadToS3(photos,'photos'));
+  }
+  const uploadResults = await Promise.all(uploadPromises);
+
+    // Extract URLs from upload results
+  const avatarurl = uploadResults.find(result => result.fieldname === 'avatar');
+  const photosUrl = uploadResults.find(result => result.fieldname === 'photos');
     const tributedata = new tribute({
      comment,
      name,
-     avatar,
+     avatar : avatarurl ? avatarurl.Location : '',
      email,
-     photos
+     photos : photosUrl ? photosUrl.Location : '',
     });
     await tributedata.save()
     const updateuser = await UserModel.findOneAndUpdate(
@@ -134,4 +188,29 @@ router.get("/getusers",async(req,res)=>{
         return res.status(400).json(error)
       }
 })
+async function uploadToS3(file,fieldname) {
+  let files = file 
+  console.log(files,"===file");
+  console.log(fieldname,"===fieldname");
+  const filestream  = fs.createReadStream(files.path)
+  const uploadparams = {
+    Bucket: "angelsnew",
+    Key: `${Date.now()}-${files.originalname}`,
+    Body: filestream,
+    ACL: "public-read"
+  };
+  try {
+    const response = await s3Client.upload(uploadparams).promise();
+    console.log(response,"===response");
+    const responses = {
+      ...response,
+      fieldname:fieldname
+    }
+    return responses;
+  } catch (error) {
+    console.error("Error uploading file to S3:", error);
+    throw error;
+  }
+}
+
 module.exports = router;

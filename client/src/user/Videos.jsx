@@ -12,7 +12,7 @@ const isTabletOrMobile = useMediaQuery({ query: '(max-width: 1224px)' })
    {user?.rejistered?.additionalVideos.map((video,index)=>{
         return(
           <div key={index} className='p-4 flex flex-col gap-2'>
-          <video src={examplevideo}></video>   
+          <video src={video && video}></video>   
       </div>
 
         )
