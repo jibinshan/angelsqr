@@ -78,7 +78,7 @@ const storage = multer.diskStorage({
      }
     
       
-       additionalVideos.forEach(video => uploadPromises.push(uploadToS3(video,'additionalPhotos')));
+       additionalVideos.forEach(video => uploadPromises.push(uploadToS3(video,'additionalVideos')));
     
      
       
