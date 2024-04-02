@@ -24,13 +24,7 @@ function App() {
   return (
    <div>
      <Routes>
-        <Route path='/bio/:qrid' element={<Bio/>}/>
-        <Route path='/photos/:qrid' element={<Photos/>}/>
-        <Route path='/videos/:qrid' element={<Videos/>}/>
-        <Route path='/tributes/:qrid' element={<Tributes/>}/>
-        <Route path='/details/:qrid' element={<Details/>}/>
-        <Route path='/createuser/:qrid' element={<CreateUser/>}/>
-        <Route path='/createtribute' element={<Createtribute/>}/>
+        <Route path='/userprofile/:qrid' element={<Userprofile/>}/>
         <Route path='/scanqr/:qrId' element={<Scanqr/>}/>
         <Route path='/login' element={<Login/>}/>
      <Route element={<ProtectedRoute/>}>

@@ -6,13 +6,16 @@ import Userprofile from './Userprofile';
 import { CgProfile } from "react-icons/cg";
 import { MdOutlinePhotoSizeSelectActual } from "react-icons/md";
 import { ClipLoader } from 'react-spinners';
+import { useSelector } from 'react-redux';
 
 function Createtribute() {
   const navigate = useNavigate()
   const [loading,setLoading] = useState(false)
   const isTabletOrMobile = useMediaQuery({ query: '(max-width: 1224px)' })
-  const location = useLocation();
-    const { userid,qrid } = location.state || {};
+    const {user} = useSelector((state)=>state.Qr)
+
+    console.log(user?.rejistered?._id,"===userid");
+    const userid = user?.rejistered?._id
   const [tributeData, setTributeData] = useState({
     avatar:'',
     comment:'',
@@ -66,7 +69,6 @@ function Createtribute() {
         data:Formdata
       })
       console.log(response);
-      navigate(`/bio/${qrid}`)
     } catch (error) {
       console.log(error);
     }finally{
@@ -79,7 +81,7 @@ function Createtribute() {
  
 
   return (
-    <Userprofile>
+    <div>
       {
         isTabletOrMobile
         ?
@@ -122,9 +124,9 @@ function Createtribute() {
       </div>
         :
         <div className='flex flex-col gap-4 p-4 mt-[50px] items-center'>
-          <p className='text-left text-blue-600 font-bold text-xl w-[500px]'>Fill out the fields below to leave memories, condolences, and/or photos.</p>
+          <p className='text-left text-stone-700 text-[25px] font-[200] leading-normal w-[500px]'>Fill out the fields below to leave memories, condolences, and/or photos.</p>
           <div className='flex flex-col gap-4 w-[500px]'>
-            <div className='w-fit flex flex-col bg-slate-200 rounded-2xl'>
+            <div className='w-fit flex flex-col bg-stone-200 rounded-2xl'>
               <label className='text-black file-upload-label' htmlFor="profile-photo-upload">
                 <span className="file-upload-icon flex items-center"><CgProfile className='h-[30px] w-[30px]'/></span>your Photo
               </label>
@@ -142,7 +144,7 @@ function Createtribute() {
            
             <textarea className='p-4 pl-2 text-black rounded-lg border-gray-400 border-[1px] h-[150px]' placeholder='Write Your Tribute Here' name="comment" onChange={handleChange}></textarea>
             
-             <div className='w-fit flex flex-col bg-slate-200 rounded-2xl'>
+             <div className='w-fit flex flex-col bg-stone-200 rounded-2xl'>
               <label className='text-black file-upload-label' htmlFor="additional-photos-upload">
                 <span className="file-upload-icon flex items-center">< MdOutlinePhotoSizeSelectActual className='h-[30px] w-[30px]'/></span>
                 Add Photo
@@ -155,11 +157,11 @@ function Createtribute() {
                  </div>
               }
             </div>
-            <button className='bg-blue-600 p-2 w-[200px] rounded-xl text-white hover:bg-blue-800' onClick={handleSubmit}>{loading ? <ClipLoader color='#36D7B7' loading={loading} size={15} /> : "Submit"}</button>
+            <button className='bg-stone-600 p-2 w-[200px] rounded-xl text-white hover:bg-stone-800' onClick={handleSubmit}>{loading ? <ClipLoader color='#36D7B7' loading={loading} size={15} /> : "Submit"}</button>
           </div>
         </div>
       }
-    </Userprofile>
+    </div>
   )
 }
 

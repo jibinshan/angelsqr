@@ -22,6 +22,7 @@ const Qrslice = createSlice({
     reducers:{
       getQrid : (state,action)=>{
         state.qrids = action.payload
+        console.log(action.payload,"===acssc");
       },
       currentqr:(state,action)=>{
         state.user = action.payload

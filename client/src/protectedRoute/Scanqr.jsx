@@ -43,9 +43,9 @@ function Scanqr() {
     }
 
     return (
-        <div className='w-full h-screen flex justify-center items-center'>
-            {isLoading && <h1><ClipLoader color='#36D7B7' loading={isLoading} size={35} /></h1>}
-            {error !== null && <h1>{error}</h1>}
+        <div className='w-screen h-screen flex justify-center items-center'>
+            {isLoading && <h1 className='w-screen h-screen flex justify-center items-center'><ClipLoader color='#36D7B7' loading={isLoading} size={35} /></h1>}
+            {error !== null && <h1 className='w-screen h-screen flex justify-center items-center'>{error}</h1>}
         </div>
     );
 }

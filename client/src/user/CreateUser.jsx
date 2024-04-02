@@ -29,6 +29,7 @@ function CreateUser() {
     cemeteryPlotNumber: '',
     cemeteryLocation: '',
   });
+  console.log(profileData,"===prodata");
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -69,6 +70,7 @@ function CreateUser() {
 
   const handleSubmit = async(e) => {
     e.preventDefault();
+    console.log(qrid,"===qrid");
     setLoading(true)
     const Formdata = new FormData()
     Formdata.append("username",profileData.username)
@@ -99,7 +101,7 @@ function CreateUser() {
         data:Formdata
       })
       console.log(response);
-      navigate(`/bio/${qrid}`)
+      navigate(`/userprofile/${qrid}`)
     } catch (error) {
       console.log(error);
     }finally{
@@ -130,9 +132,9 @@ function CreateUser() {
         isTabletOrMobile
         ?
         <div className='flex flex-col gap-4 w-full p-4'>
-          <p className='text-left text-blue-600 font-bold text-lg'>Create a memorial page in a few easy steps. Enter details for your loved one below to get started.</p>
+          <p className='text-left text-stone-700 text-[25px] font-[200] leading-normal'>Create a memorial page in a few easy steps. Enter details for your loved one below to get started.</p>
           <div className='flex flex-col gap-4'>
-          <div className='w-fit flex flex-col bg-slate-200 rounded-2xl'>
+          <div className='w-fit flex flex-col bg-stone-200 rounded-2xl'>
               <label className='text-black file-upload-label' htmlFor="profile-photo-upload">
                 <span className="file-upload-icon flex items-center"><CgProfile className='h-[30px] w-[30px]'/></span> Profile Photo
               </label>
@@ -146,7 +148,7 @@ function CreateUser() {
               }
             </div>
 
-            <div className='w-fit flex flex-col bg-slate-200 rounded-2xl'>
+            <div className='w-fit flex flex-col bg-stone-200 rounded-2xl'>
               <label className='text-black file-upload-label' htmlFor="cover-photo-upload">
                 <span className="file-upload-icon flex items-center"><FaImage className='h-[30px] w-[30px]'/></span> Cover Image
               </label>
@@ -179,7 +181,7 @@ function CreateUser() {
             <label htmlFor="">Bio</label>
             <textarea className='p-4 pl-2 text-black rounded-lg border-gray-400 border-[1px] h-[150px]' name="bio" onChange={handleChange}></textarea>
             </div>
-            <div className='w-fit flex flex-col bg-slate-200 rounded-2xl'>
+            <div className='w-fit flex flex-col bg-stone-200 rounded-2xl'>
               <label className='text-black file-upload-label' htmlFor="additional-photos-upload">
                 <span className="file-upload-icon flex items-center"><IoMdPhotos className='h-[30px] w-[30px]'/></span>
                 Add Photos
@@ -203,7 +205,7 @@ function CreateUser() {
                 </div>
             }
             </div>
-            <div className='w-fit flex flex-col bg-slate-200 rounded-2xl'>
+            <div className='w-fit flex flex-col bg-stone-200 rounded-2xl'>
               <label className='text-black file-upload-label' htmlFor="single-video-upload">
                 <span className="file-upload-icon flex items-center"><BiSolidVideos className='h-[30px] w-[30px]'/></span>
                 Add Videos
@@ -245,9 +247,9 @@ function CreateUser() {
         :
         
         <div className='flex flex-col gap-4  p-4 w-[700px] mt-[50px]'>
-          <p className='text-left text-blue-600 font-bold text-3xl '>Create a memorial page in a few easy steps. Enter details for your loved one below to get started.</p>
+          <p className='text-left text-stone-600 text-[30px] font-[200] leading-normal'>Create a memorial page in a few easy steps. Enter details for your loved one below to get started.</p>
           <div className='flex flex-col gap-4 w-[500px] '>
-            <div className='w-fit flex flex-col bg-slate-200 rounded-2xl'>
+            <div className='w-fit flex flex-col bg-stone-200 rounded-2xl'>
               <label className='text-black file-upload-label' htmlFor="profile-photo-upload">
                 <span className="file-upload-icon flex items-center"><CgProfile className='h-[30px] w-[30px]'/></span> Profile Photo
               </label>
@@ -260,7 +262,7 @@ function CreateUser() {
                
               }
             </div>
-            <div className='w-fit flex flex-col bg-slate-200 rounded-2xl'>
+            <div className='w-fit flex flex-col bg-stone-200 rounded-2xl'>
               <label className='text-black file-upload-label' htmlFor="cover-photo-upload">
                 <span className="file-upload-icon flex items-center"><FaImage className='h-[30px] w-[30px]'/></span> Cover Image
               </label>
@@ -293,7 +295,7 @@ function CreateUser() {
             <label htmlFor="">Bio</label>
             <textarea className='p-4 pl-2 text-black rounded-lg border-gray-400 border-[1px] h-[150px]' name="bio" onChange={handleChange}></textarea>
             </div>
-            <div className='w-fit flex flex-col bg-slate-200 rounded-2xl'>
+            <div className='w-fit flex flex-col bg-stone-200 rounded-2xl'>
               <label className='text-black file-upload-label' htmlFor="additional-photos-upload">
                 <span className="file-upload-icon flex items-center"><IoMdPhotos className='h-[30px] w-[30px]'/></span>
                 Add Photos
@@ -317,7 +319,7 @@ function CreateUser() {
                 </div>
             }
             </div>
-            <div className='w-fit flex flex-col bg-slate-200 rounded-2xl'>
+            <div className='w-fit flex flex-col bg-stone-200 rounded-2xl'>
               <label className='text-black file-upload-label' htmlFor="single-video-upload">
                 <span className="file-upload-icon flex items-center"><BiSolidVideos className='h-[30px] w-[30px]'/></span>
                 Add Videos
@@ -353,7 +355,7 @@ function CreateUser() {
             <label htmlFor="">Cemetery Location</label>
             <input className='p-4 pl-2 text-black rounded-lg border-gray-400 border-[1px]' type="text" name="cemeteryLocation" onChange={handleChange}/>
             </div>
-            <button className='bg-blue-600 p-4 rounded-lg text-white hover:bg-blue-800' onClick={handleSubmit}>{loading ? <ClipLoader color='#36D7B7' loading={loading} size={15} /> : "Submit"}</button>
+            <button className='bg-stone-700 p-4 rounded-lg text-white hover:bg-stone-900' onClick={handleSubmit}>{loading ? <ClipLoader color='#36D7B7' loading={loading} size={15} /> : "Submit"}</button>
           </div>
         </div>
       }

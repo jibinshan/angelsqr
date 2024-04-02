@@ -76,7 +76,7 @@ const storage = multer.diskStorage({
      }
     
       
-       additionalVideos.forEach(video => uploadPromises.push(uploadToS3(video,'additionalPhotos')));
+       additionalVideos.forEach(video => uploadPromises.push(uploadToS3(video,'additionalVideos')));
     
      
       
@@ -198,7 +198,7 @@ async function uploadToS3(file,fieldname) {
     Bucket: bucketname,
     Key: `${Date.now()}-${files.originalname}`,
     Body: filestream,
-    //ACL: "public-read"
+    ACL: "public-read"
   };
   try {
     const response = await s3Client.upload(uploadparams).promise();

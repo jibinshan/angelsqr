@@ -39,7 +39,7 @@ const ScanQr =  async (req, res) => {
         console.log(qrexist,"llllllllllllllllllll");
         if (qrexist && qrexist.rejistered) {
             // If there are registered users, redirect to the bio page of the first registered user
-            return res.status(200).json(`/bio/${qrId}`);
+            return res.status(200).json(`/userprofile/${qrId}`);
         } else {
             // If there are no registered users, redirect to create user page
             return res.status(200).json(`/createuser/${qrId}`);

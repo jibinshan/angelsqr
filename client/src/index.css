@@ -1,7 +1,9 @@
-@import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400..700&family=Ephesis&family=Hedvig+Letters+Sans&family=Kanit:wght@500&family=Nunito+Sans:opsz,wght@6..12,600&family=Outfit:wght@100..900&family=Pacifico&family=Preahvihear&family=Quicksand:wght@500&family=Red+Hat+Display:ital,wght@0,300..900;1,300..900&family=Rubik+Bubbles&family=Saira+Extra+Condensed:wght@100&display=swap');
+
+@import url('https://fonts.googleapis.com/css2?family=EB+Garamond:wght@400;700&display=swap');
+
 
 body{
-  font-family: "Red Hat Display", sans-serif;
+  font-family: eb garamond;
 }
 .file-upload-label {
   cursor: pointer;
