@@ -15,6 +15,8 @@ const accessKey = process.env.AWS_ACCESS_KEY_ID
 const secretkey = process.env.AWS_SECRET_ACCESS_KEY
 const bucketname = process.env.AWS_S3_BUCKET
 
+console.log(bucketname,"===bucketname")
+
 // process.env.AWS_ACCESS_KEY_ID,
 const s3Client = new S3({
     region: region,  
