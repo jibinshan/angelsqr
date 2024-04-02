@@ -31,3 +31,7 @@ body{
 .file-upload-icon {
   margin-right: 8px;
 }
+.image{
+  background-image: url("/bgflower.jpg");
+  background-size: cover;
+}

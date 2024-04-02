@@ -46,7 +46,7 @@ function Userprofile({children}) {
         isTabletOrMobile
         ?
         <div>
-        <img className='w-full h-[150px] rounded-b-xl' src={user?.rejistered?.coverImage?user?.rejistered?.coverImage:''} alt="" />
+        <img className='image w-full h-[150px] rounded-b-xl' src={user?.rejistered?.coverImage && user?.rejistered?.coverImage} alt="" />
         <div className=' w-full  flex flex-col items-center  pl-4 pr-4 gap-2'>
          <div className='p-[5px] rounded-[50%] bg-white absolute top-[100px]'>
           <img className='w-[150px] h-[150px] rounded-[50%]' src={user?.rejistered?.profilePhoto?user?.rejistered?.profilePhoto:userimage} alt="user" />
@@ -69,7 +69,7 @@ function Userprofile({children}) {
       </div>
         :
         <div className='pl-4 pr-4 mt-4'> 
-        <img className='w-full h-[250px] rounded-2xl' src={user?.rejistered?.coverImage?user?.rejistered?.coverImage:bgflower} alt="" />
+        <img className='image w-full h-[250px] rounded-2xl' src={user?.rejistered?.coverImage && user?.rejistered?.coverImage} alt="" />
         <div className=' w-full  flex flex-col items-center  pl-4 pr-4 gap-[5px]'>
          <div className='p-[5px] rounded-[50%] bg-white absolute top-[100px]'>
           <img className='w-[250px] h-[250px] rounded-[50%]' src={user?.rejistered?.profilePhoto?user?.rejistered?.profilePhoto:userimage} alt="user" />
