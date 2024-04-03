@@ -12,15 +12,17 @@ const isTabletOrMobile = useMediaQuery({ query: '(max-width: 1224px)' })
 const [createtribute,setCreatetribute] = useState(false)
   const {user} = useSelector((state)=>state.Qr)
   return (
-    <div>
+    <div className='w-full'>
      <p className=' text-[rgb(59, 59, 59)] font-[400] text-[42px] border-b-[1px] pb-2 border-stone-200 mb-4'>Memory Wall</p> 
     <div className='w-full p-4 flex flex-col gap-2 items-center'>
-     <button onClick={()=>setCreatetribute(!createtribute)} className='bg-stone-600 hover:bg-stone-800 p-4 text-white border-none text-center rounded-lg font-thin flex justify-center items-center space-x-2'><LiaPagerSolid className='w-[30px] h-[30px]'/> <span className='font-[500]'>Create Tribute</span></button> 
+     <button onClick={()=>setCreatetribute(!createtribute)} className='text-black p-4 border-[1px] border-[#d1d1d1] text-center rounded-lg font-thin flex justify-center items-center space-x-2'><LiaPagerSolid className='w-[30px] h-[30px]'/> <span className='font-[500]'>Write on the memory wall</span></button> 
 {
-  createtribute ? 
+  createtribute  && 
+
   <Createtribute/>
-  :
-  <div>
+}
+  
+  <div className='w-full'>
   {
     isTabletOrMobile ?     
     <div className='w-full p-4 flex flex-col gap-2'> 
@@ -38,23 +40,27 @@ const [createtribute,setCreatetribute] = useState(false)
 })}
 </div>
     :
-<div className='w-full p-4 flex flex-col gap-2 items-center' ref={tribute}> 
+<div className=' p-4 flex flex-col gap-2 items-center' ref={tribute}> 
 {user?.rejistered?.tribute.map((tributes,index)=>{
      return(
-  <div key={index} className='w-full flex flex-col gap-2 border-[1px] border-slate-700 p-4 rounded-lg'>
+  <div key={index} className='w-full flex flex-col gap-2 p-4 rounded-lg border border-[rgba(255, 255, 255, 0.7)] shadow-lg shadow-[rgba(170, 170, 170, 0.4)]'>
+    <p className='font-[400] pt-2 text-[22px]'>{tributes?.date}</p>
+      <p className='font-[400] pt-2 text-[22px]'>{tributes?.comment}</p>
     <div className='flex pt-[10px] items-center gap-2'>
-      <img className='w-[40px] h-[40px] rounded-[50px]' src={tributes?.avatar?tributes?.avatar:userimage} alt="" />
-      <p className='font-semibold text-lg'>{tributes?.name}</p>
+      {/* <img className='w-[40px] h-[40px] rounded-[50px]' src={tributes?.avatar?tributes?.avatar:userimage} alt="" /> */}
+      <p className=' w-full font-[500] text-[22px] text-right'>{tributes?.name}</p>
     </div>   
-      <p className='font-medium pt-2 text-lg'>{tributes?.comment}</p>
+    {
+      tributes?.photos &&
       <img className='w-[80px] h-[80px]' src={tributes?.photos && tributes?.photos} alt="" />
+    }
   </div>  
   ) 
 })}
 </div>
   }
 </div>
-}
+
    
     </div>
     </div>

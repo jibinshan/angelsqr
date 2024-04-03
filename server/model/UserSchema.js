@@ -33,13 +33,34 @@ const UserSchema = new mongoose.Schema({
     additionalVideos:[{
         type: String,
     }],
-    cemeteryName:{
+    Vadditionaldetails:{
         type: String,
     },
-    cemeteryPlotNumber:{
+    Vdate:{
         type: String,
     },
-    cemeteryLocation:{
+    Vstarttime:{
+        type: String,
+    },
+    Vendtime:{
+        type: String,
+    },
+    Vlocation:{
+        type: String,
+    },
+    Fsadditionaldetails:{
+        type: String,
+    },
+    Fsdate:{
+        type: String,
+    },
+    Fsstarttime:{
+        type: String,
+    },
+    Fsendtime:{
+        type: String,
+    },
+    Fslocation:{
         type: String,
     },
     tribute:[

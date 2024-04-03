@@ -5,12 +5,14 @@ const TributeSchema = new mongoose.Schema({
         type: String, 
         required: true 
     },
-    avatar: { 
-        type: String, 
+    // avatar: { 
+    //     type: String, 
+    // },
+    date:{
+       type:String,
     },
     comment:{
-        type: String,
-        required: true  
+        type: String,  
     },
     email:{
        type:String

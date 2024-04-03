@@ -25,6 +25,7 @@ function App() {
    <div>
      <Routes>
         <Route path='/userprofile/:qrid' element={<Userprofile/>}/>
+        <Route path='/createuser/:qrid' element={<CreateUser/>}/>
         <Route path='/scanqr/:qrId' element={<Scanqr/>}/>
         <Route path='/login' element={<Login/>}/>
      <Route element={<ProtectedRoute/>}>

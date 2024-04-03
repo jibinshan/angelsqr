@@ -17,7 +17,7 @@ function Createtribute() {
     console.log(user?.rejistered?._id,"===userid");
     const userid = user?.rejistered?._id
   const [tributeData, setTributeData] = useState({
-    avatar:'',
+    // avatar:'',
     comment:'',
     name:'',
     email:'',
@@ -31,12 +31,12 @@ function Createtribute() {
       [name]: value,
     }));
   };
-  const handleprofileChange = (e)=>{
-    setTributeData(prevState => ({
-      ...prevState,
-      avatar:e.target.files[0]
-    }));
-  }
+  // const handleprofileChange = (e)=>{
+  //   setTributeData(prevState => ({
+  //     ...prevState,
+  //     avatar:e.target.files[0]
+  //   }));
+  // }
 
   const handlePhotoChange = (e) => {
     setTributeData(prevState => ({
@@ -53,7 +53,7 @@ function Createtribute() {
     const Formdata = new FormData()
     Formdata.append("name",tributeData.name)
     Formdata.append("photos",tributeData.photos)
-    Formdata.append("avatar",tributeData.avatar)
+    // Formdata.append("avatar",tributeData.avatar)
     Formdata.append("email",tributeData.email)
     Formdata.append("comment",tributeData.comment)
     const api = `https://angelsqr-3.onrender.com/user/createtribute/${userid}`
@@ -88,7 +88,7 @@ function Createtribute() {
         <div className='flex flex-col gap-4 p-4 mt-[10px] items-center'>
         <p className='text-left text-blue-600 font-bold text-xl'>Fill out the fields below to leave memories, condolences, and/or photos.</p>
         <div className='flex flex-col gap-4 w-full'>
-          <div className='w-fit flex flex-col bg-slate-200 rounded-2xl'>
+          {/* <div className='w-fit flex flex-col bg-slate-200 rounded-2xl'>
             <label className='text-black file-upload-label' htmlFor="profile-photo-upload">
               <span className="file-upload-icon flex items-center"><CgProfile className='h-[30px] w-[30px]'/></span>your Photo
             </label>
@@ -99,7 +99,7 @@ function Createtribute() {
                <img src={URL.createObjectURL(tributeData.avatar)} alt="no image" className=' w-[150px] h-[150px] rounded-[50%]'/>
                </div>
             }
-          </div>
+          </div> */}
           
           <input className='p-4 pl-2 text-black rounded-lg border-gray-400 border-[1px]' placeholder='Your Name' type="text" name="name" onChange={handleChange}/>
           
@@ -123,10 +123,10 @@ function Createtribute() {
         </div>
       </div>
         :
-        <div className='flex flex-col gap-4 p-4 mt-[50px] items-center'>
-          <p className='text-left text-stone-700 text-[25px] font-[200] leading-normal w-[500px]'>Fill out the fields below to leave memories, condolences, and/or photos.</p>
-          <div className='flex flex-col gap-4 w-[500px]'>
-            <div className='w-fit flex flex-col bg-stone-200 rounded-2xl'>
+        <div className='flex flex-col gap-4 p-4 mt-[50px] items-center w-full'>
+          <p className='text-left text-[#3b3b3b] text-[21px] font-[400] leading-normal w-full'>Fill out the fields below to leave memories, condolences, and/or photos.</p>
+          <div className='flex flex-col gap-4 w-full'>
+            {/* <div className='w-fit flex flex-col bg-stone-200 rounded-2xl'>
               <label className='text-black file-upload-label' htmlFor="profile-photo-upload">
                 <span className="file-upload-icon flex items-center"><CgProfile className='h-[30px] w-[30px]'/></span>your Photo
               </label>
@@ -137,12 +137,12 @@ function Createtribute() {
                  <img src={URL.createObjectURL(tributeData.avatar)} alt="no image" className=' w-[150px] h-[150px] rounded-[50%]'/>
                  </div>
               }
-            </div>
+            </div> */}
             
             <input className='p-4 pl-2 text-black rounded-lg border-gray-400 border-[1px]' placeholder='Your Name' type="text" name="name" onChange={handleChange}/>
-            <input className='p-4 pl-2 text-black rounded-lg border-gray-400 border-[1px]' placeholder='Email' type="email" name="email" onChange={handleChange}/>
+            <input className='p-4 pl-2 text-black rounded-lg border-gray-400 border-[1px]' placeholder='Your email address' type="email" name="email" onChange={handleChange}/>
            
-            <textarea className='p-4 pl-2 text-black rounded-lg border-gray-400 border-[1px] h-[150px]' placeholder='Write Your Tribute Here' name="comment" onChange={handleChange}></textarea>
+            <textarea className='p-4 pl-2 text-black rounded-lg border-gray-400 border-[1px] h-[150px]' placeholder='Type message Here' name="comment" onChange={handleChange}></textarea>
             
              <div className='w-fit flex flex-col bg-stone-200 rounded-2xl'>
               <label className='text-black file-upload-label' htmlFor="additional-photos-upload">
@@ -157,7 +157,7 @@ function Createtribute() {
                  </div>
               }
             </div>
-            <button className='bg-stone-600 p-2 w-[200px] rounded-xl text-white hover:bg-stone-800' onClick={handleSubmit}>{loading ? <ClipLoader color='#36D7B7' loading={loading} size={15} /> : "Submit"}</button>
+            <button className=' p-3 w-[150px] rounded-lg text-black border border-[#d1d1d1] font-[500] text-[#3b3b3b]' onClick={handleSubmit} style={{fontFamily: 'Poppins, sans-serif'}}>{loading ? <ClipLoader color='#36D7B7' loading={loading} size={15} /> : "Submit"}</button>
           </div>
         </div>
       }

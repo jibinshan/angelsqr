@@ -28,6 +28,16 @@ function CreateUser() {
     cemeteryName: '',
     cemeteryPlotNumber: '',
     cemeteryLocation: '',
+    Vadditionaldetails:'',
+    Vdate:'',
+    Vstarttime:'',
+    Vendtime:'',
+    Vlocation:'',
+    Fsadditionaldetails:'',
+    Fsdate:'',
+    Fsstarttime:'',
+    Fsendtime:'',
+    Fslocation:'',
   });
   console.log(profileData,"===prodata");
 
@@ -38,6 +48,28 @@ function CreateUser() {
       [name]: value,
     }));
   };
+  const handledobChange = (e)=>{
+    const dateValue = e.target.value;
+    const dateObject = new Date(dateValue);
+    const options = { month: 'long', day: 'numeric', year: 'numeric' };
+    const userFriendlyDate = dateObject.toLocaleDateString('en-US', options);
+
+    setProfileData((prev)=>({
+      ...prev,
+      dateOfBirth:userFriendlyDate
+    }))
+  }
+  const handledodChange = (e)=>{
+    const dateValue = e.target.value;
+    const dateObject = new Date(dateValue);
+    const options = { month: 'long', day: 'numeric', year: 'numeric' };
+    const userFriendlyDate = dateObject.toLocaleDateString('en-US', options);
+
+    setProfileData((prev)=>({
+      ...prev,
+      dateOfDeath:userFriendlyDate
+    }))
+  }
   const handleprofileChange = (e)=>{
     setProfileData(prevState => ({
       ...prevState,
@@ -67,7 +99,28 @@ function CreateUser() {
       additionalVideos: [...prevState.additionalVideos, ...videos],
     }));
   };
+const handlevdateChange = (e)=>{
+  const dateValue = e.target.value;
+  const dateObject = new Date(dateValue);
+  const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+  const userFriendlyDate = dateObject.toLocaleDateString('en-US', options);
 
+  setProfileData((prev)=>({
+    ...prev,
+    Vdate:userFriendlyDate
+  }))
+}
+const handlefsdateChange = (e)=>{
+  const dateValue = e.target.value;
+  const dateObject = new Date(dateValue);
+  const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+  const userFriendlyDate = dateObject.toLocaleDateString('en-US', options);
+
+  setProfileData((prev)=>({
+    ...prev,
+    Fsdate:userFriendlyDate
+  }))
+}
   const handleSubmit = async(e) => {
     e.preventDefault();
     console.log(qrid,"===qrid");
@@ -87,9 +140,18 @@ function CreateUser() {
     Formdata.append("dateOfBirth",profileData.dateOfBirth)
     Formdata.append("about",profileData.about)
     Formdata.append("bio",profileData.bio)
-    Formdata.append("cemeteryName",profileData.cemeteryName)
-    Formdata.append("cemeteryPlotNumber",profileData.cemeteryPlotNumber)
-    Formdata.append("cemeteryLocation",profileData.cemeteryLocation)
+
+    Formdata.append("Vadditionaldetails",profileData.Vadditionaldetails)
+    Formdata.append("Vdate",profileData.Vdate)
+    Formdata.append("Vstarttime",profileData.Vstarttime)
+    Formdata.append("Vendtime",profileData.Vendtime)
+    Formdata.append("Vlocation",profileData.Vlocation)
+    Formdata.append("Fsadditionaldetails",profileData.Fsadditionaldetails)
+    Formdata.append("Fsdate",profileData.Fsdate)
+    Formdata.append("Fsstarttime",profileData.Fsstarttime)
+    Formdata.append("Fsendtime",profileData.Fsendtime)
+    Formdata.append("Fslocation",profileData.Fslocation)
+
     const api = 'https://angelsqr-3.onrender.com/user/createUser'
     try {
       const response = await axios(api,{
@@ -281,18 +343,18 @@ function CreateUser() {
             </div>
             <div className='flex flex-col'>
             <label htmlFor="">Date Of Birth</label>
-            <input className='p-4 pl-2 text-black rounded-lg border-gray-400 border-[1px]' type="date"  name="dateOfBirth" onChange={handleChange}/>
+            <input className='p-4 pl-2 text-black rounded-lg border-gray-400 border-[1px]' type="date"  name="dateOfBirth" onChange={handledobChange}/>
             </div>
             <div className='flex flex-col'>
             <label htmlFor="">Date Of Death</label>
-            <input className='p-4 pl-2 text-black rounded-lg border-gray-400 border-[1px]' type="date" name="dateOfDeath" onChange={handleChange}/>
+            <input className='p-4 pl-2 text-black rounded-lg border-gray-400 border-[1px]' type="date" name="dateOfDeath" onChange={handledodChange}/>
             </div>
             <div className='flex flex-col'>
-            <label htmlFor="">About (one sentence)</label>
+            <label htmlFor="">Place of residence</label>
             <input className='p-4 pl-2 text-black rounded-lg border-gray-400 border-[1px]' type="text" name="about" onChange={handleChange}/>
             </div>
             <div className='flex flex-col'>
-            <label htmlFor="">Bio</label>
+            <label htmlFor="">Obituary</label>
             <textarea className='p-4 pl-2 text-black rounded-lg border-gray-400 border-[1px] h-[150px]' name="bio" onChange={handleChange}></textarea>
             </div>
             <div className='w-fit flex flex-col bg-stone-200 rounded-2xl'>
@@ -343,18 +405,58 @@ function CreateUser() {
                 </div>
             }
             </div>
+  
+           <div className='flex flex-col gap-4'>
+            <h4 className='font-[600] text-2xl'>Visitation</h4>
             <div className='flex flex-col'>
-            <label htmlFor="">Cemetery Name</label>
-            <input className='p-4 pl-2 text-black rounded-lg border-gray-400 border-[1px]' type="text" name="cemeteryName" onChange={handleChange}/>
+            <label htmlFor="">Date</label>
+            <input className='p-4 pl-2 text-black rounded-lg border-gray-400 border-[1px]'  type="date" name="Vdate" onChange={handlevdateChange}/>
+            </div>
+            <div className='w-full flex space-x-4'>
+            <div className='flex flex-col w-[50%]'>
+            <label htmlFor="">Start Time</label>
+            <input className='p-4 pl-2 text-black rounded-lg border-gray-400 border-[1px]' type="time" name="Vstarttime" onChange={handleChange}/>
+            </div>
+            <div className='flex flex-col w-[50%]'>
+            <label htmlFor="">End Time</label>
+            <input className='p-4 pl-2 text-black rounded-lg border-gray-400 border-[1px]' type="time" name="Vendtime" onChange={handleChange}/>
+            </div>
+            </div>
+           <div className='flex flex-col'>
+            <label htmlFor="">Location</label>
+            <input className='p-4 pl-2 text-black rounded-lg border-gray-400 border-[1px]' type="text" name="Vlocation" onChange={handleChange}/>
             </div>
             <div className='flex flex-col'>
-            <label htmlFor="">Cemetery Plot Number</label>
-            <input className='p-4 pl-2 text-black rounded-lg border-gray-400 border-[1px]' type="text" name="cemeteryPlotNumber" onChange={handleChange}/>
+            <label htmlFor="">Additional Details</label>
+            <textarea className='p-4 pl-2 text-black rounded-lg border-gray-400 border-[1px] h-[150px]' name="Vadditionaldetails" onChange={handleChange}></textarea>
+            </div>
+           </div>
+          
+           <div className='flex flex-col gap-4'>
+            <h4 className='font-[600] text-2xl'>Funeral service</h4>
+            <div className='flex flex-col'>
+            <label htmlFor="">Date</label>
+            <input className='p-4 pl-2 text-black rounded-lg border-gray-400 border-[1px]' type="date" name="Fsdate" onChange={handlefsdateChange}/>
+            </div>
+            <div className='w-full flex space-x-4'>
+            <div className='flex flex-col w-[50%]'>
+            <label htmlFor="">Start Time</label>
+            <input className='p-4 pl-2 text-black rounded-lg border-gray-400 border-[1px]' type="time" name="Fsstarttime" onChange={handleChange}/>
+            </div>
+            <div className='flex flex-col w-[50%]'>
+            <label htmlFor="">End Time</label>
+            <input className='p-4 pl-2 text-black rounded-lg border-gray-400 border-[1px]' type="time" name="Fsendtime" onChange={handleChange}/>
+            </div>
+            </div>
+           <div className='flex flex-col'>
+            <label htmlFor="">Location</label>
+            <input className='p-4 pl-2 text-black rounded-lg border-gray-400 border-[1px]' type="text" name="Fslocation" onChange={handleChange}/>
             </div>
             <div className='flex flex-col'>
-            <label htmlFor="">Cemetery Location</label>
-            <input className='p-4 pl-2 text-black rounded-lg border-gray-400 border-[1px]' type="text" name="cemeteryLocation" onChange={handleChange}/>
+            <label htmlFor="">Additional Details</label>
+            <textarea className='p-4 pl-2 text-black rounded-lg border-gray-400 border-[1px] h-[150px]' name="Fsadditionaldetails" onChange={handleChange}></textarea>
             </div>
+           </div>
             <button className='bg-stone-700 p-4 rounded-lg text-white hover:bg-stone-900' onClick={handleSubmit}>{loading ? <ClipLoader color='#36D7B7' loading={loading} size={15} /> : "Submit"}</button>
           </div>
         </div>

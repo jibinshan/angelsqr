@@ -39,6 +39,10 @@ const storage = multer.diskStorage({
   
   
   const upload = multer({ storage: storage });
+  const currentDate = new Date();
+const formattedDate = currentDate.toLocaleDateString('en-US');
+const [month, day, year] = formattedDate.split('/');
+const formattedDateString = `${month}/${day}/${year.slice(-2)}`;
   
   // Route for creating a new user
   router.put("/createUser", upload.fields([
@@ -56,9 +60,16 @@ const storage = multer.diskStorage({
       dateOfDeath,
       about,
       bio,
-      cemeteryName,
-      cemeteryPlotNumber,
-      cemeteryLocation,
+      Vadditionaldetails,
+      Vdate,
+      Vstarttime,
+      Vendtime,
+      Vlocation,
+      Fsadditionaldetails,
+      Fsdate,
+      Fsstarttime,
+      Fsendtime,
+      Fslocation,
     } = req.body;
 
     // Extract file paths from the uploaded files
@@ -104,9 +115,16 @@ const storage = multer.diskStorage({
       bio,
       additionalPhotos: additionalPhotosUrls,
       additionalVideos: additionalVideosUrls,
-      cemeteryName,
-      cemeteryPlotNumber,
-      cemeteryLocation,
+      Vadditionaldetails,
+      Vdate,
+      Vstarttime,
+      Vendtime,
+      Vlocation,
+      Fsadditionaldetails,
+      Fsdate,
+      Fsstarttime,
+      Fsendtime,
+      Fslocation,
       coverImage: coverImageUrl ? coverImageUrl.Location : '',
     });  
     await userdata.save()   
@@ -139,34 +157,35 @@ const storage = multer.diskStorage({
   }
 });
 router.put("/createtribute/:userid", upload.fields([
-  { name: 'avatar', maxCount: 1 },
+  // { name: 'avatar', maxCount: 1 },
 { name: 'photos', maxCount: 1 },
 ]),async(req,res)=>{
   try {
     const {comment,name,email} = req.body;
     const {userid} = req.params
-    const avatar = req.files['avatar'] ? req.files['avatar'][0] : '';
+    // const avatar = req.files['avatar'] ? req.files['avatar'][0] : '';
     const photos = req.files['photos'] ? req.files['photos'][0] : '';
 
  // Upload files to S3 concurrently
  const uploadPromises = [];
- if (avatar) {
-    uploadPromises.push(uploadToS3(avatar,'avatar'));
-  }
+//  if (avatar) {
+//     uploadPromises.push(uploadToS3(avatar,'avatar'));
+//   }
   if (photos) {
     uploadPromises.push(uploadToS3(photos,'photos'));
   }
   const uploadResults = await Promise.all(uploadPromises);
 
     // Extract URLs from upload results
-  const avatarurl = uploadResults.find(result => result.fieldname === 'avatar');
+  // const avatarurl = uploadResults.find(result => result.fieldname === 'avatar');
   const photosUrl = uploadResults.find(result => result.fieldname === 'photos');
     const tributedata = new tribute({
      comment,
      name,
-     avatar : avatarurl ? avatarurl.Location : '',
      email,
      photos : photosUrl ? photosUrl.Location : '',
+     date:formattedDateString
+    //  avatar : avatarurl ? avatarurl.Location : '',
     });
     await tributedata.save()
     const updateuser = await UserModel.findOneAndUpdate(
