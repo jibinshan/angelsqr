@@ -37,7 +37,7 @@ const isTabletOrMobile = useMediaQuery({ query: '(max-width: 1224px)' })
      </div>
        </div>
         :
-        <div className='w-full mt-2' ref={details}>
+        <div className='w-full mt-2 mb-20' ref={details}>
         <p className='font-[400] text-[42px] border-b-[1px] pb-2 border-stone-200 mb-[30px] text-[#3b3b3b]'>Services</p> 
         <div className='w-full flex flex-col items-center space-y-8'>
 
