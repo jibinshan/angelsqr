@@ -35,3 +35,14 @@ body{
   background-image: url("/bgflower.jpg");
   background-size: cover;
 }
+
+.drop-cap::first-letter {
+  font-size: 4em;
+  font-weight: bold; 
+  float: left; 
+  line-height: 0.8; 
+  margin-right: 0.1em; 
+}
+.bggreen{
+  background-color: rgba(66, 101, 94, 1);
+}

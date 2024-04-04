@@ -17,6 +17,7 @@ import { IoMdPhotos } from "react-icons/io";
 import { BiSolidVideos } from "react-icons/bi";
 import { FaPenToSquare } from "react-icons/fa6";
 import { TbListDetails } from "react-icons/tb";
+import { BsArrowUp } from "react-icons/bs";
 import { BiLogoFacebookCircle } from "react-icons/bi";
 import Bio from './Bio'
 import Photos from './Photos'
@@ -27,6 +28,7 @@ function Userprofile({children}) {
   const dispatch = useDispatch()
   const {qrid} = useParams()
   dispatch(getQrid(qrid))
+  const home = useRef()
   const bio = useRef()
   const photos = useRef()
   const tribute = useRef()
@@ -39,7 +41,6 @@ function Userprofile({children}) {
       dispatch(qrasync())
     }
     const scrollhandler = (elmref)=>{
-      console.log(elmref.current,"==elmref");
         window.scrollTo({top:elmref.current.offsetTop,behavior:"smooth"})
     }
     useEffect(()=>{
@@ -73,7 +74,7 @@ function Userprofile({children}) {
        </div>
       </div>
         :
-        <div className='pl-4 pr-4 mt-4'> 
+        <div className='pl-4 pr-4 mt-4' ref={home}> 
         <img className='image w-full h-[250px] rounded-2xl object-cover' src={user?.rejistered?.coverImage ? user?.rejistered?.coverImage : ''} alt="" />
         <div className='w-full flex justify-end mr-4'>
            <button className='flex items-center mt-4 border border-[#d1d1d1] p-2 rounded-lg space-x-2 '>
@@ -97,7 +98,7 @@ function Userprofile({children}) {
             <li onClick={()=>scrollhandler(tribute)} className='cursor-pointer text-[18px] text-[#3b3b3b] font-[400] border-[1px] border-[#d1d1d1] p-4 rounded-xl flex items-center space-x-2 w-[210px] justify-center'  ><img src={pen} alt="" className='w-[40px] h-[40px]' /><span className='text-[18px] font-[400]' style={{fontFamily: 'Poppins, sans-serif'}}>Memory Wall</span></li>
             </ul>
         </div>
-        <div className='w-[750px] pb-4 text-xl flex flex-col space-y-8'>
+        <div className='w-[750px] pb-4 text-xl flex flex-col space-y-8 mb-[150px]'>
             <Bio bio={bio}/>
             <Details details={details}/>
             <Photos photos={photos} />
@@ -106,6 +107,11 @@ function Userprofile({children}) {
        </div>
       </div>
       }
+      <button className='fixed bottom-4 right-4 border-[1px] p-4 rounded-[50%] bg-white/40 shadow-lg' onClick={()=>scrollhandler(home)}><BsArrowUp className='w-[25px] h-[25px]'/></button>
+      <div className='w-full h-[150px] bg-stone-800 flex justify-center items-center space-x-[5px] sm:mb-0'>
+        <p className='text-white text-md font-[400]' style={{fontFamily: 'Poppins, sans-serif'}}>Created with</p>
+        <h4 className='text-white text-2xl font-[400]' style={{fontFamily: 'Poppins, sans-serif'}}>AngelsQr</h4>
+      </div>
     </div>
   )
 }

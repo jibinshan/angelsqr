@@ -37,7 +37,7 @@ const isTabletOrMobile = useMediaQuery({ query: '(max-width: 1224px)' })
      </div>
        </div>
         :
-        <div className='w-full mt-2' ref={details}>
+        <div className='w-full mt-2 mb-20' ref={details}>
         <p className='font-[400] text-[42px] border-b-[1px] pb-2 border-stone-200 mb-[30px] text-[#3b3b3b]'>Services</p> 
         <div className='w-full flex flex-col items-center space-y-8'>
 
@@ -75,7 +75,7 @@ const isTabletOrMobile = useMediaQuery({ query: '(max-width: 1224px)' })
         </div>
      </div>
      </div>
-     <div className='w-[700px] p-6 mt-2 border-4 border-stone-400 rounded-lg'>
+     <div className='w-[700px] p-6 mt-2 border-4 border-stone-400 rounded-lg '>
         <div className='flex flex-col gap-6'>
         <h4 className='text-[#3b3b3b] text-[22px] font-[600] pb-4' style={{fontFamily: 'Poppins, sans-serif'}}>Funeral Service</h4> 
         <div className='flex flex-col gap-4'>
