@@ -90,18 +90,18 @@ function Userprofile({children}) {
            <p className='pb-4 text-center text-[26px] text-[#3b3b3b] font-thin w-[800px]'>{user?.rejistered?.about}</p>
           <div className='flex gap-6'>
             <ul className='flex space-x-4'>
-            <li onClick={()=>scrollhandler(bio)} className= ' cursor-pointer text-3xl text-[#3b3b3b] font-thin border-[1px] border-[#d1d1d1] p-4 rounded-xl flex items-center space-x-2 w-[210px] justify-center' ><img src={book} alt="" className='w-[40px] h-[40px]' /><span className='text-[18px] font-[400]' style={{fontFamily: 'Poppins, sans-serif'}}>Obituary</span></li>
-            <li onClick={()=>scrollhandler(photos)} className='cursor-pointer text-3xl text-[#3b3b3b] font-thin border-[1px] border-[#d1d1d1] p-4 rounded-xl flex items-center space-x-2 w-[210px] justify-center'   ><img src={photoss} alt="" className='w-[40px] h-[40px]' /><span className='text-[18px] font-[400]' style={{fontFamily: 'Poppins, sans-serif'}}>Photos</span></li>
+            <li onClick={()=>scrollhandler(bio)} className= ' cursor-pointer text-[18px] text-[#3b3b3b] font-[400] border-[1px] border-[#d1d1d1] p-4 rounded-xl flex items-center space-x-2 w-[210px] justify-center' ><img src={book} alt="" className='w-[40px] h-[40px]' /><span className='text-[18px] font-[400]' style={{fontFamily: 'Poppins, sans-serif'}}>Obituary</span></li>
+            <li onClick={()=>scrollhandler(details)} className='cursor-pointer text-[18px] text-[#3b3b3b] font-[400] border-[1px] border-[#d1d1d1] p-4 rounded-xl flex items-center space-x-2 w-[210px] justify-center'   ><img src={candles} alt="" className='w-[40px] h-[40px]'/><span className='text-[18px] font-[400]' style={{fontFamily: 'Poppins, sans-serif'}}>Services</span></li>
+            <li onClick={()=>scrollhandler(photos)} className='cursor-pointer text-[18px] text-[#3b3b3b] font-[400] border-[1px] border-[#d1d1d1] p-4 rounded-xl flex items-center space-x-2 w-[210px] justify-center'   ><img src={photoss} alt="" className='w-[40px] h-[40px]' /><span className='text-[18px] font-[400]' style={{fontFamily: 'Poppins, sans-serif'}}>Photos</span></li>
             {/* <li  className='cursor-pointer text-3xl text-[#3b3b3b] font-thin border-[1px] border-black p-4 rounded-xl flex items-center space-x-2 w-[170px] justify-center'  ><BiSolidVideos  className='h-[30px] w-[30px]'/><span>Videos</span></li> */}
-            <li onClick={()=>scrollhandler(tribute)} className='cursor-pointer text-3xl text-[#3b3b3b] font-thin border-[1px] border-[#d1d1d1] p-4 rounded-xl flex items-center space-x-2 w-[210px] justify-center'  ><img src={pen} alt="" className='w-[40px] h-[40px]' /><span className='text-[18px] font-[400]' style={{fontFamily: 'Poppins, sans-serif'}}>Memory Wall</span></li>
-            <li onClick={()=>scrollhandler(details)} className='cursor-pointer text-3xl text-[#3b3b3b] font-thin border-[1px] border-[#d1d1d1] p-4 rounded-xl flex items-center space-x-2 w-[210px] justify-center'   ><img src={candles} alt="" className='w-[40px] h-[40px]'/><span className='text-[18px] font-[400]' style={{fontFamily: 'Poppins, sans-serif'}}>Services</span></li>
+            <li onClick={()=>scrollhandler(tribute)} className='cursor-pointer text-[18px] text-[#3b3b3b] font-[400] border-[1px] border-[#d1d1d1] p-4 rounded-xl flex items-center space-x-2 w-[210px] justify-center'  ><img src={pen} alt="" className='w-[40px] h-[40px]' /><span className='text-[18px] font-[400]' style={{fontFamily: 'Poppins, sans-serif'}}>Memory Wall</span></li>
             </ul>
         </div>
-        <div className='w-[800px] pb-4 text-xl flex flex-col space-y-8'>
+        <div className='w-[750px] pb-4 text-xl flex flex-col space-y-8'>
             <Bio bio={bio}/>
+            <Details details={details}/>
             <Photos photos={photos} />
             <Tributes tribute={tribute}/>
-            <Details details={details}/>
         </div>
        </div>
       </div>

@@ -13,9 +13,9 @@ const [createtribute,setCreatetribute] = useState(false)
   const {user} = useSelector((state)=>state.Qr)
   return (
     <div className='w-full'>
-     <p className=' text-[rgb(59, 59, 59)] font-[400] text-[42px] border-b-[1px] pb-2 border-stone-200 mb-4'>Memory Wall</p> 
+     <p className=' text-[#3b3b3b] font-[400] text-[42px] border-b-[1px] pb-2 border-stone-200 mb-4'>Memory Wall</p> 
     <div className='w-full p-4 flex flex-col gap-2 items-center'>
-     <button onClick={()=>setCreatetribute(!createtribute)} className='text-black p-4 border-[1px] border-[#d1d1d1] text-center rounded-lg font-thin flex justify-center items-center space-x-2'><LiaPagerSolid className='w-[30px] h-[30px]'/> <span className='font-[500]'>Write on the memory wall</span></button> 
+     <button onClick={()=>setCreatetribute(!createtribute)} className='text-black px-[14px] py-[10px] border-[1px] border-[#d1d1d1] text-center rounded-lg font-thin flex justify-center items-center space-x-2 mb-[10px]'><LiaPagerSolid className='w-[30px] h-[30px]'/> <span className='font-[500]'>Write on the memory wall</span></button> 
 {
   createtribute  && 
 
