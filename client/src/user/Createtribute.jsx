@@ -85,10 +85,10 @@ function Createtribute() {
       {
         isTabletOrMobile
         ?
-        <div className='flex flex-col gap-4 p-4 mt-[10px] items-center'>
-        <p className='text-left text-blue-600 font-bold text-xl'>Fill out the fields below to leave memories, condolences, and/or photos.</p>
+        <div className='flex flex-col gap-4 p-2 mt-[50px] items-center w-full'>
+        <p className='text-left text-[#3b3b3b] text-[21px] font-[400] leading-normal w-full'>Fill out the fields below to leave memories, condolences, and/or photos.</p>
         <div className='flex flex-col gap-4 w-full'>
-          {/* <div className='w-fit flex flex-col bg-slate-200 rounded-2xl'>
+          {/* <div className='w-fit flex flex-col bg-stone-200 rounded-2xl'>
             <label className='text-black file-upload-label' htmlFor="profile-photo-upload">
               <span className="file-upload-icon flex items-center"><CgProfile className='h-[30px] w-[30px]'/></span>your Photo
             </label>
@@ -102,11 +102,11 @@ function Createtribute() {
           </div> */}
           
           <input className='p-4 pl-2 text-black rounded-lg border-gray-400 border-[1px]' placeholder='Your Name' type="text" name="name" onChange={handleChange}/>
+          <input className='p-4 pl-2 text-black rounded-lg border-gray-400 border-[1px]' placeholder='Your email address' type="email" name="email" onChange={handleChange}/>
+         
+          <textarea className='p-4 pl-2 text-black rounded-lg border-gray-400 border-[1px] h-[150px]' placeholder='Type message Here' name="comment" onChange={handleChange}></textarea>
           
-         <input className='p-4 pl-2 text-black rounded-lg border-gray-400 border-[1px]' placeholder='Email' type="email" name="email" onChange={handleChange}/>
-          <textarea className='p-4 pl-2 text-black rounded-lg border-gray-400 border-[1px] h-[150px]' placeholder='Write Your Tribute Here' name="comment" onChange={handleChange}></textarea>
-          
-           <div className='w-fit flex flex-col bg-slate-200 rounded-2xl'>
+           <div className='w-fit flex flex-col bg-stone-200 rounded-2xl'>
             <label className='text-black file-upload-label' htmlFor="additional-photos-upload">
               <span className="file-upload-icon flex items-center">< MdOutlinePhotoSizeSelectActual className='h-[30px] w-[30px]'/></span>
               Add Photo
@@ -119,7 +119,7 @@ function Createtribute() {
                </div>
             }
           </div>
-          <button className='bg-blue-600 p-2 w-[200px] rounded-xl text-white hover:bg-blue-800' onClick={handleSubmit}>{loading ? <ClipLoader color='#36D7B7' loading={loading} size={15} /> : "Submit"}</button>
+          <button className=' p-3 w-[150px] rounded-lg text-black border border-[#d1d1d1] font-[500] text-[#3b3b3b]' onClick={handleSubmit} style={{fontFamily: 'Poppins, sans-serif'}}>{loading ? <ClipLoader color='#36D7B7' loading={loading} size={15} /> : "Submit"}</button>
         </div>
       </div>
         :

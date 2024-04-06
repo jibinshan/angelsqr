@@ -12,8 +12,8 @@ const isTabletOrMobile = useMediaQuery({ query: '(max-width: 1224px)' })
     <div>
       {
         isTabletOrMobile?
-     <div>
-
+     <div  ref={photos}>
+     <p className=' text-[#3b3b3b] font-[400] text-[42px] border-b-[1px] pb-2 border-stone-200 mb-4'>Photo Gallery</p> 
         {user?.rejistered?.additionalPhotos.map((photo,index)=>{
           return(
             <div key={index} className='p-4 flex flex-col gap-2 rounded-sm'>
