@@ -224,7 +224,7 @@ const handlefsdateChange = (e)=>{
               }
             </div>
             <div className='flex flex-col'>
-            <label htmlFor="" className='text-lg'>Full Name</label>
+            <label htmlFor="">Full Name</label>
             <input className='p-4 pl-2 text-black rounded-lg border-gray-400 border-[1px]' type="text" name="username" onChange={handleChange}/>
             </div>
             <div className='flex flex-col'>
@@ -236,11 +236,11 @@ const handlefsdateChange = (e)=>{
             <input className='p-4 pl-2 text-black rounded-lg border-gray-400 border-[1px]' type="date" name="dateOfDeath" onChange={handleChange}/>
             </div>
             <div className='flex flex-col'>
-            <label htmlFor="">About (one sentence)</label>
+            <label htmlFor="">Place of recidence</label>
             <input className='p-4 pl-2 text-black rounded-lg border-gray-400 border-[1px]' type="text" name="about" onChange={handleChange}/>
             </div>
             <div className='flex flex-col'>
-            <label htmlFor="">Bio</label>
+            <label htmlFor="">Obituary</label>
             <textarea className='p-4 pl-2 text-black rounded-lg border-gray-400 border-[1px] h-[150px]' name="bio" onChange={handleChange}></textarea>
             </div>
             <div className='w-fit flex flex-col bg-stone-200 rounded-2xl'>
@@ -291,19 +291,58 @@ const handlefsdateChange = (e)=>{
                 </div>
             }
             </div>
+            <div className='flex flex-col gap-4'>
+            <h4 className='font-[600] text-2xl'>Visitation</h4>
             <div className='flex flex-col'>
-            <label htmlFor="">Cemetery Name</label>
-            <input className='p-4 pl-2 text-black rounded-lg border-gray-400 border-[1px]' type="text" name="cemeteryName" onChange={handleChange}/>
+            <label htmlFor="">Date</label>
+            <input className='p-4 pl-2 text-black rounded-lg border-gray-400 border-[1px]'  type="date" name="Vdate" onChange={handlevdateChange}/>
+            </div>
+            <div className='w-full flex space-x-4'>
+            <div className='flex flex-col w-[50%]'>
+            <label htmlFor="">Start Time</label>
+            <input className='p-4 pl-2 text-black rounded-lg border-gray-400 border-[1px]' type="time" name="Vstarttime" onChange={handleChange}/>
+            </div>
+            <div className='flex flex-col w-[50%]'>
+            <label htmlFor="">End Time</label>
+            <input className='p-4 pl-2 text-black rounded-lg border-gray-400 border-[1px]' type="time" name="Vendtime" onChange={handleChange}/>
+            </div>
+            </div>
+           <div className='flex flex-col'>
+            <label htmlFor="">Location</label>
+            <input className='p-4 pl-2 text-black rounded-lg border-gray-400 border-[1px]' type="text" name="Vlocation" onChange={handleChange}/>
             </div>
             <div className='flex flex-col'>
-            <label htmlFor="">Cemetery Plot Number</label>
-            <input className='p-4 pl-2 text-black rounded-lg border-gray-400 border-[1px]' type="text" name="cemeteryPlotNumber" onChange={handleChange}/>
+            <label htmlFor="">Additional Details</label>
+            <textarea className='p-4 pl-2 text-black rounded-lg border-gray-400 border-[1px] h-[150px]' name="Vadditionaldetails" onChange={handleChange}></textarea>
+            </div>
+           </div>
+
+           <div className='flex flex-col gap-4'>
+            <h4 className='font-[600] text-2xl'>Funeral service</h4>
+            <div className='flex flex-col'>
+            <label htmlFor="">Date</label>
+            <input className='p-4 pl-2 text-black rounded-lg border-gray-400 border-[1px]' type="date" name="Fsdate" onChange={handlefsdateChange}/>
+            </div>
+            <div className='w-full flex space-x-4'>
+            <div className='flex flex-col w-[50%]'>
+            <label htmlFor="">Start Time</label>
+            <input className='p-4 pl-2 text-black rounded-lg border-gray-400 border-[1px]' type="time" name="Fsstarttime" onChange={handleChange}/>
+            </div>
+            <div className='flex flex-col w-[50%]'>
+            <label htmlFor="">End Time</label>
+            <input className='p-4 pl-2 text-black rounded-lg border-gray-400 border-[1px]' type="time" name="Fsendtime" onChange={handleChange}/>
+            </div>
+            </div>
+           <div className='flex flex-col'>
+            <label htmlFor="">Location</label>
+            <input className='p-4 pl-2 text-black rounded-lg border-gray-400 border-[1px]' type="text" name="Fslocation" onChange={handleChange}/>
             </div>
             <div className='flex flex-col'>
-            <label htmlFor="">Cemetery Location</label>
-            <input className='p-4 pl-2 text-black rounded-lg border-gray-400 border-[1px]' type="text" name="cemeteryLocation" onChange={handleChange}/>
+            <label htmlFor="">Additional Details</label>
+            <textarea className='p-4 pl-2 text-black rounded-lg border-gray-400 border-[1px] h-[150px]' name="Fsadditionaldetails" onChange={handleChange}></textarea>
             </div>
-            <button className='bg-blue-600 p-4 rounded-lg text-white hover:bg-blue-800' onClick={handleSubmit}> {loading ? <ClipLoader color='#36D7B7' loading={loading} size={15} /> : "Submit"}</button>
+           </div>
+            <button className='bg-stone-600 p-4 rounded-lg text-white hover:bg-blue-800' onClick={handleSubmit}> {loading ? <ClipLoader color='#36D7B7' loading={loading} size={15} /> : "Submit"}</button>
           </div>
         </div>
         :
